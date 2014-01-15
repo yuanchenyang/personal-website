@@ -4,8 +4,30 @@
     overflow: hidden;
 }
 
-.skill-item div {
-    margin: 10px;
+.image-left {
+    float:left;
+    margin: 0.5em 1em;
+}
+
+.image-right {
+    float:right;
+    margin: 0.5em 1em;
+}
+
+.text {
+    width: auto;
+    margin: 1em;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.gray,
+.gray a,
+.gray a:visited,
+.gray a:hover{
+	color: #aaa;
 }
 
 body {
