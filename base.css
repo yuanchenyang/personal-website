@@ -1,0 +1,27 @@
+.skill-item {
+    margin: 10px;
+    background-color: white;
+    overflow: hidden;
+}
+
+.skill-item div {
+    margin: 10px;
+}
+
+body {
+    background-color: rgba(0,0,0,0.1);
+    font-family: Computer Modern, Calibri;
+}
+
+a:visited { color: black;}
+a:link { color: black;}
+
+h1 {
+    font-weight: normal;
+    color: black;
+}
+
+@font-face {
+    font-family: "Computer Modern";
+    src: url('/static/cmunss.otf');
+}
