@@ -18,7 +18,7 @@ a.project-link:hover,
 a.project-link:link,
 a.project-link {
     color: black;
-    text-decoration: none;
+    //text-decoration: none;
 }
 
 .top-bar {
