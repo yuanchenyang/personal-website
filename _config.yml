@@ -1,0 +1,12 @@
+name: Chenyang's Homepage
+description: Projects and Blog
+meta_description: "Projects and Blog"
+
+markdown: redcarpet
+highlighter: pygments
+logo: false
+paginate: 15
+
+# Details for the RSS feed generator
+url:            'http://www.chenyang.co'
+author:         'Chenyang Yuan'

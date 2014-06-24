@@ -1,3 +1,38 @@
+/* Rosario. I've added and changed few things. Feel free to change it as you like */
+
+/* Font size of 2.0 is too big, I'll reduce it */
+body {font-size: 1.9rem;}
+
+/* Adding some text shadow*/
+.site-head {text-shadow: 2px 2px #234;}
+.site-head a {color:#eee;}
+
+/* The font is too large in the post view. Revert to small size*/
+.post-header .blog-title {font-size:inherit;}
+
+/* Reduce font size and add line-height*/
+pre{
+	font-size: 0.75em;
+	line-height: 1.4em;
+}
+
+/* Author styling */
+.author {margin-bottom:1em;}
+.author header{
+	float:left;
+	width: 80px;
+}
+.author article{
+	margin-left:80px;
+	min-height: 80px;
+	padding-left:20px;
+}
+img.profile {
+	width:80px;
+	height:auto;
+  	border-radius: 50px;
+}
+
 .project-list {
     list-style-type: none;
     list-style-position: inside;
@@ -22,7 +57,7 @@ a.project-link {
 }
 
 .top-bar {
-    max-width: 990px;
+    max-width: 980px;
     margin: 10px auto;
     padding: 10px;
     background-color: white;
@@ -57,7 +92,7 @@ a.project-link {
 .top-bar-title {
     font-size: 24px;
     font-weight: 800;
-    padding-top: 8px;
+    padding-top: 12px;
     padding-left: 60px;
     padding-right: 60px;
 }
@@ -83,24 +118,4 @@ a.project-link {
 
 .text-right {
     text-align: right;
-}
-
-
-
-body {
-    background-color: rgba(0,0,0,0.2);
-    font-family: Georgia,Palatino,Times,serif;
-}
-
-
-
-h1 {
-    font-weight: normal;
-    color: black;
-    font-family: Helvetica,Arial,sans-serif;
-}
-
-@font-face {
-    font-family: "Computer Modern";
-    src: url('/static/cmunss.otf');
 }
