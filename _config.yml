@@ -2,7 +2,7 @@ name: Chenyang's Homepage
 description: Projects and Blog
 meta_description: "Projects and Blog"
 
-markdown: redcarpet
+markdown: kramdown
 highlighter: pygments
 logo: false
 paginate: 15
