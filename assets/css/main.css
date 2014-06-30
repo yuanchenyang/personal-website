@@ -107,6 +107,25 @@ img.profile {
     margin: 0.5em 1em;
 }
 
+columns {
+    display: inline-block;
+    width: 100%;
+}
+columns {
+    clear: both;
+    margin-top: -20px;
+    margin-bottom: -20px;
+}
+
+columns .highlight {
+    display: table-cell;
+    width: 47.5%;
+    height: 100%
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+    float: left;
+}
+
 .text {
     width: auto;
     margin: 1em;
