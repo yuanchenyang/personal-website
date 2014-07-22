@@ -673,11 +673,7 @@ margin on the iframe, cause it breaks stuff. */
    ========================================================================== */
 
 .site-footer {
-    position: relative;
-    width:80%;
-    max-width: 900px;
     padding: 20px 50px;
-    margin: 10px auto;
     border-top: #EBF2F6 1px solid;
     font-family: 'Open Sans', sans-serif;
     font-size: 1.3rem;
@@ -785,7 +781,6 @@ margin on the iframe, cause it breaks stuff. */
     opacity: 1;
     top: -33px;
 }
-
 
 /* ==========================================================================
    9. Media Queries - Smaller than 900px
@@ -944,7 +939,6 @@ margin on the iframe, cause it breaks stuff. */
     }
 
     .site-footer {
-        margin-top: 6rem;
         font-size: 1.1rem;
     }
 
