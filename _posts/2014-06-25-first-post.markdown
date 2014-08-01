@@ -20,7 +20,7 @@ generate everything with:
 $ jekyll build
 {% endhighlight %}
 
-As you can see, there's syntax highlighting and even \\(\LaTeX\\) support.
+As you can see, there's syntax highlighting and even $$ \LaTeX $$ support.
 
 In the next few weeks, I'm going to try to blog about something interesting
 (Physics/Math/CS) at least once a week.
