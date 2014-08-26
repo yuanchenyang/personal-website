@@ -138,3 +138,22 @@ columns .highlight {
 .text-right {
     text-align: right;
 }
+
+.graph-container {
+    max-width: 600px;
+    height: 600px;
+    margin: auto;
+}
+
+.graph-container-box {
+    max-width: 600px;
+    margin: auto;
+}
+
+.color-red {
+    color: #f00;
+}
+
+.color-blue {
+    color: #00f;
+}

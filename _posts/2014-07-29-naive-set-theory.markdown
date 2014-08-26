@@ -105,6 +105,6 @@ this [wikipedia article][bell-number] gives a good overview.
 That's it for this post! Stay tuned for the next one, where I'm going to write
 about well-ordering and transfinite recursion.
 
-[amazon-link]:   http://www.amazon.com/Naive-Set-Theory-Paul-Halmos/dp/1614271313
-[review-1]: http://lesswrong.com/lw/ir6/book_review_na%C3%AFve_set_theory_miri_course_list/
+[amazon-link]: http://www.amazon.com/Naive-Set-Theory-Paul-Halmos/dp/1614271313
+[review-1]:    http://lesswrong.com/lw/ir6/book_review_na%C3%AFve_set_theory_miri_course_list/
 [bell-number]: http://en.wikipedia.org/wiki/Bell_number
