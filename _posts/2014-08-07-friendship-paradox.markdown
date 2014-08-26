@@ -8,7 +8,7 @@ categories: math
 Let's suppose that you ask all your friends how many friends they have, and
 compare that average friends that your friends have to the number of friends you
 have. It might surprise you that on average, you will have less friends than
-your friends friends.
+your friends have.
 
 How can this be true? It might seem that there should be some sort of symmetry
 in the number of friends everyone has, and therefore among your's friends, on
