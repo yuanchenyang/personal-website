@@ -8,5 +8,5 @@ logo: false
 paginate: 15
 
 # Details for the RSS feed generator
-url:            'http://www.chenyang.co'
+url:            'https://www.chenyang.co'
 author:         'Chenyang Yuan'
