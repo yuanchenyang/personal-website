@@ -1,0 +1,5 @@
+MAILTO="yuanchenyang@gmail.com"
+15,45 * * * * cd /var/www/archiver/archiver && ./run.sh
+0     3 * * * cd /home/chenyang && ./pull.sh
+#*/5   * * * * cd /home/chenyang && ./publish-ok.sh
+#0,15,30,45 * * * * ssh cs61a-ra@torus.cs.berkeley.edu "~cs61a/grading/testing/testing_script"
