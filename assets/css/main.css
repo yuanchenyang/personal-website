@@ -157,3 +157,7 @@ columns .highlight {
 .color-blue {
     color: #00f;
 }
+
+.graph-image > img {
+    width: 200px;
+}
