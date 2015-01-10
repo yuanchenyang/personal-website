@@ -15,7 +15,7 @@ graph is shown below.
 
 Can we devise an efficient algorithm that determines whether a graph is
 2-colorable, and outputs a 2-coloring if it is? It turns out that we can do this
-easily by first assigning an arbitary color to any node, then continue assigning
+easily by first assigning an arbitrary color to any node, then continue assigning
 colors to adjacent nodes while making sure no edge joins 2 vertices of the same
 color, until either all the nodes have a color (successful), or a contradiction
 is reached (failure). This algorithm runs in time proportional to the size of
@@ -93,10 +93,10 @@ joined by and, where each clause is up to 3 variables or their negation joined
 by or. For example, $$(x \vee y \vee \bar{z}) \wedge (\bar{x} \vee y)$$. We need
 to find an assignment to each variable, either $$T$$ or $$F$$, such that the
 entire expression evaluates to $$T$$, or say that it is impossible to do so. In
-$$\text{Circuit-SAT}$$, we are given a network of boolean circuits with many
+$$\text{Circuit-SAT}$$, we are given a network of Boolean circuits with many
 inputs and one output, and our task is to find a set of inputs such that the
 output of the circuit is $$T$$, or say that it's impossible to do so. An example
-of a boolean circuit is shown below.
+of a Boolean circuit is shown below.
 
 ![Boolean circuit image](/assets/images/boolean-circuit.png)
 
@@ -124,7 +124,7 @@ We have already done the last reduction, and would not be doing $$\text{3-SAT}
 \rightarrow \text{3-SAT}$$ can be done by converting each gate to logic clauses. For
 example, an and-gate with inputs $$x_1$$, $$x_2$$ and output $$y$$ can be
 converted into $$(x_1 \wedge x_2) \iff y$$ and simplified into the desired form
-with boolean algebra.
+with Boolean algebra.
 
 The most interesting reduction in this stack is $$\text{All of NP} \rightarrow
 \text{Circuit-SAT}$$. Recall that to prove this reduction, suppose we have a
@@ -132,7 +132,7 @@ $$\text{Circuit-SAT}$$ solver, we need to find a way to use this solver to solve
 any problem in NP. Since a problem in NP is a search problem, it must have an
 efficient verifier. This verifier is a program that takes a solution and outputs
 "True" if the solution is valid, or "False" if it isn't. This program can be
-implemented on a computer, which itself is a network of boolean circuits! Thus
+implemented on a computer, which itself is a network of Boolean circuits! Thus
 there is a way to convert this program into a circuit to feed into the
 $$\text{Circuit-SAT}$$ solver, and we have [shown][cook-levin] that
 $$\text{Circuit-SAT}$$ and all the other problems in this chain is at least as
