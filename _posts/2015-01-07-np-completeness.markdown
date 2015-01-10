@@ -5,8 +5,6 @@ date:   2015-01-07 00:00:00
 categories: math
 ---
 
-$$ \require{AMScd} $$
-
 Let's look at an algorithmic problem. We have a graph, and we want to color all
 the vertices with 2 colors such that each edge connects 2 vertices of the same
 color. This problem is called $$\text{2-coloring}$$. An example of a 2-colorable
@@ -106,6 +104,7 @@ With these problems defined, we can follow this path of reductions to prove that
 $$n\text{-coloring}$$ is NP-complete.
 
 $$
+\require{AMScd}
 \begin{CD}
 \text{All of NP}\\
 @VVV  \\
