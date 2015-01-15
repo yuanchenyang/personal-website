@@ -45,15 +45,16 @@ $$\int_0^\pi (\cos \theta)^{100} d\theta = \frac{\pi}{2^{100}}
 This is a pretty powerful trick to solve trigonometric integrals, but in the end
 it's still hard to estimate the order of magnitude of the exact answer without a
 calculator. Here is where the approximate method shines. We first approximate
-$$\cos \theta$$ with a Taylor series, then use the fact that $$(1 + \epsilon)^n
-\approx e^{\epsilon n}$$:
+$$\cos \theta$$ with a Taylor series, then use the fact that $$(1 - \epsilon)^n
+\approx e^{- \epsilon n}$$:
 
 $$
 \begin{align}
 \int_0^\pi (\cos \theta)^{100} d\theta
-&\approx \int_0^\pi \left(1 + \frac{\theta^2}{2}\right)^{100} d\theta \\
-&\approx \int_0^\pi e^{50 \theta^2} d\theta \\
-&\approx \frac{1}{\sqrt{50}} \int_0^\infty e^{\theta^2} d\theta \\
+&\approx \int_0^\pi \left(1 - \frac{\theta^2}{2}\right)^{100} d\theta \\
+&\approx \int_0^\pi e^{-50 \theta^2} d\theta \\
+&\approx \int_0^\infty e^{-50 \theta^2} d\theta \\
+&\approx \frac{1}{\sqrt{50}} \int_0^\infty e^{-\theta^2} d\theta \\
 &= \sqrt{\frac{\pi}{50}} \\
 &\approx \sqrt{\frac{\pi}{16\pi}} \\
 &= 0.25
