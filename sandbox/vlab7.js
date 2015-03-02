@@ -105,7 +105,7 @@ function plotSecretSharing(){
         };
         var curve = brd.create('functiongraph', [sum, -5, 5], {strokeWidth:3});
         config.sspoints.forEach(function (e) {
-            brd.create('point', e, {name: "("+ e[0] + ", " + e[1] +")"});
+            brd.create('point', e, {face: "cross", frozen: true, name: "("+ e[0] + ", " + e[1] +")"});
         });
         var g = brd.create('glider', [0, 0, curve], {withLabel:false});
         var t = brd.create('text', [
