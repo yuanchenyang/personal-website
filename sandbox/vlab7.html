@@ -1,0 +1,144 @@
+<!doctype html>
+<html ng-app="rps">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Polynomials, Secret Sharing and Error Correcting Codes</title>
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"> </script>
+    <style>
+      body {
+        padding-top: 70px;
+      }
+      a {
+        cursor: pointer;
+      }
+      img.img-responsive {
+        border: 0px solid black;
+        margin: 0;
+        padding: 0;
+      }
+      .vcenter {
+        display: inline-block;
+        vertical-align: middle;
+        float: none;
+      }
+      .vspace {
+        margin-top: 10px;
+        margin-bottom: 5px;
+      }
+      .formula-box {
+        width: 400px;
+      }
+      label {
+        display: inline;
+      }
+      .jxgbox {
+        /* for IE 7 */
+        position: relative;
+        overflow: hidden;
+        background-color: #ffffff;
+        border-style: solid;
+        border-width: 1px;
+        border-color: #356AA0;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -ms-touch-action: none;
+      }
+      .JXGtext {
+        /* May produce artefacts in IE. Solution: setting a color explicitly. */
+        background-color: transparent;
+        font-family: Arial, Helvetica, Geneva, sans-serif;
+        padding: 0;
+        margin: 0;
+      }
+      .JXGinfobox {
+        border-style: none;
+        border-width: 1px;
+        border-color: black;
+      }
+      .JXGimage {
+        opacity: 1.0;
+      }
+      .JXGimageHighlight {
+        opacity: 0.6;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand">
+            Polynomials, Secret Sharing and Error Correcting Codes
+          </a>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <h3>Introduction</h3>
+      <p>
+        In this lab we will introduce you to working with polynomials.
+      </p>
+      <div id="poly-sandbox" class="jxgbox" style="width:800px; height:600px;"></div>
+
+      <h3>Secret Sharing</h3>
+      The points given are <span id="ss-point0"></span>, <span id="ss-point1"></span>,
+      <span id="ss-point2"></span>, <span id="ss-point3"></span>:
+
+      <div id="secret-sharing" class="jxgbox" style="width:600px; height:400px;"></div>
+
+      Compute the 4 delta polynomials that passes the 4 points given, then click
+      "Plot" to plot them and compute their sums, which should be a polynomial
+      passing through all 4 points given. Now read off the secret, which is the
+      value of the polynomial at \(x = 0\). <b> TODO: Remove answers before release</b>
+
+      <ul style="list-style-type:none">
+        <li> <input type="text" id="ss-input0" class="formula-box"
+                    value="(x + 1) * (x - 1) * (x - 3) / (-48)"> </li>
+        <li> <input type="text" id="ss-input1" class="formula-box"
+                    value="(x + 3) * (x - 1) * (x - 3) / 16"> </li>
+        <li> <input type="text" id="ss-input2" class="formula-box"
+                    value="(x + 3) * (x + 1) * (x - 3) / (-16)"> </li>
+        <li> <input type="text" id="ss-input3" class="formula-box"
+                    value="(x + 3) * (x + 1) * (x - 1) / 48"> </li>
+      </ul>
+
+      <input type="button" value="Plot" onClick="plotSecretSharing()">
+
+      Paste the secret here (to 1 decimal place): <input type="text" id="ss-secret"> </li>
+      <input type="button" value="Check secret" onClick="checkSecret()">
+
+      <span id="ss-result"></span>
+
+      <h3>Finite Fields?</h3>
+
+      Recall that when we want to share a secret using a polynomial of degree
+      \(d\), we choose \(d\) other random points each with different \(x\)
+      values and find a polynomial passing through these points and \((0,
+      \text{secret})\). \(d+1\) points of the polynomial are then needed to
+      recover the secret. In this question we investigate what happens when we
+      do secret sharing over the reals, but we have one less point needed to
+      recover the secret. Suppose that in this case besides the secrets, the
+      other points at \( x=-4, -2, 2, 4 \) forming the polynomial are chosen
+      randomly from -5 to 5, and you only have 3 points at \(x=-4, -2, 2 \)
+      whereas 4 points are needed to reconstruct the polynomial. With this
+      information and the interactive graph below to help you, can you give a
+      rough range for the value of the secret?
+
+      <div id="secret-information" class="jxgbox" style="width:600px; height:400px;"></div>
+
+      Would this be a problem if we switched to finite fields? Why or why not?
+
+      <h3>Error Correcting</h3>
+    </div>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jsxgraph/0.99.3/jsxgraphcore.js"></script>
+    <script type="text/javascript" src="vlab7.js"></script>
+
+    <script>
+
+    </script>
+  </body>
+</html>
