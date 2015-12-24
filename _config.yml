@@ -5,7 +5,11 @@ meta_description: "Projects and Blog"
 markdown: kramdown
 highlighter: pygments
 logo: false
-paginate: 15
+
+gems: [jekyll-paginate]
+paginate: 5
+paginate_path: "/blog/page:num/"
+
 
 # Details for the RSS feed generator
 url:            'https://www.chenyang.co'
