@@ -4,3 +4,4 @@ cd /var/www/archiver/archiver && git pull -q
 cd /var/www/coding-js && git pull -q
 cd /home/chenyang/caltime && git pull -q
 cd /var/www/web && git pull -q && /usr/local/bin/jekyll build > /dev/null
+cp ~/pdfs/* /var/www/web/_site
