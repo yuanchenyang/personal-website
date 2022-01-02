@@ -1,15 +1,19 @@
 name: Chenyang's Homepage
-description: Projects and Blog
-meta_description: "Projects and Blog"
+description: Chenyang's research, software and projects
+meta_description: "Chenyang's research, software and projects"
 
 markdown: kramdown
-highlighter: pygments
+highlighter: rogue
 logo: false
 
-gems: [jekyll-paginate]
+plugins: [jekyll-paginate]
 paginate: 5
 paginate_path: "/blog/page:num/"
 
+collections:
+  research:
+  software:
+  projects:
 
 # Details for the RSS feed generator
 url:            'https://www.chenyang.co'

@@ -1,0 +1,11 @@
+<ul class="project-list">
+
+  {% for item in list reversed %}
+  <li class="project-item">
+    <div class="text">
+      <h3> {{ item.title }}</h3>
+      {{ item.content | markdownify }}
+    </div>
+  </li>
+  {% endfor %}
+</ul>

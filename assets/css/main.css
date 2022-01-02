@@ -87,7 +87,7 @@ img.profile {
 .top-bar-title {
     font-size: 24px;
     font-weight: 800;
-    padding-top: 12px;
+    padding-top: 16px;
     padding-bottom: 10px;
     padding-left: 15px;
     padding-right: 15px;
@@ -100,18 +100,18 @@ img.profile {
 .image-left {
     float:left;
     margin: 0.5em 1em;
+    margin-top: 30px;
 }
 
 .image-right {
     float:right;
     margin: 0.5em 1em;
+    margin-top: 30px;
 }
 
 columns {
     display: inline-block;
     width: 100%;
-}
-columns {
     clear: both;
     margin-top: -20px;
     margin-bottom: -20px;
@@ -160,4 +160,9 @@ columns .highlight {
 
 .graph-image > img {
     width: 200px;
+}
+
+h5 {
+    color: #555;
+    margin-bottom: auto;
 }

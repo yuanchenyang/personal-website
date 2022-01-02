@@ -10,3 +10,5 @@
 
 ## Project specific
 _site
+/.jekyll-metadata
+/.jekyll-cache/
