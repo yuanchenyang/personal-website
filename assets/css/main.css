@@ -33,6 +33,11 @@ img.profile {
   	border-radius: 50px;
 }
 
+.page-title {
+    color: #0072C1;
+    margin-bottom: 25px;
+}
+
 .project-list {
     list-style-type: none;
     list-style-position: inside;
@@ -87,7 +92,7 @@ img.profile {
 .top-bar-title {
     font-size: 24px;
     font-weight: 800;
-    padding-top: 16px;
+    padding-top: 15px;
     padding-bottom: 10px;
     padding-left: 15px;
     padding-right: 15px;
@@ -107,6 +112,12 @@ img.profile {
     float:right;
     margin: 0.5em 1em;
     margin-top: 30px;
+}
+
+.image-right-p {
+    float:right;
+    margin: 0.5em 1em;
+    margin-top: 0px;
 }
 
 columns {

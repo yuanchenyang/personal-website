@@ -2,7 +2,7 @@
 name: 3D Particle Simulation
 image-src: assets/images/particles.png
 image-width: 300
-link: https://www.chenyang.co/particles
+link: /particles
 ---
 
 A simulation with thousands of particles attracted by gravity towards many

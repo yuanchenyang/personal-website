@@ -9,11 +9,13 @@ attacks. We model this problem as a queueing network and the attacker or
 operator aims to optimally control a fraction of the agents in the network to
 meet some objective.
 
-J. Thai, <b> C. Yuan</b>, A. Bayen, "Resiliency of Mobility-as-a-Service
-Systems to Denial-of-Service Attacks", <i> IEEE Transactions on Control of
-Network Systems </i> [\[pdf\]](/assets/pdfs/IEEE_TNCS_submission.pdf)
+J. Thai,  **C. Yuan**, A. Bayen. "Resiliency of Mobility-as-a-Service Systems
+to Denial-of-Service Attacks", _IEEE Transactions on Control of Network Systems_.
+[\[link\]](https://ieeexplore.ieee.org/document/7574290)
+[\[pdf\]](/assets/pdfs/IEEE_TNCS_submission.pdf)
 
-<b>C. Yuan </b>, J. Thai, A. Bayen, "ZUbers against ZLyfts Apocalypse: An
-Analysis Framework for DoS Attacks on Mobility-as-a-Service Systems", <i>
-ACM/IEEE International Conference on Cyber-Physical Systems</i>
+**C. Yuan**, J. Thai, A. Bayen. "ZUbers against ZLyfts Apocalypse: An Analysis
+Framework for DoS Attacks on Mobility-as-a-Service Systems", _ACM/IEEE
+International Conference on Cyber-Physical Systems_.
+[\[link\]](https://ieeexplore.ieee.org/document/7479132/citations#citations)
 [\[pdf\]](/assets/pdfs/ICCPS16_submission.pdf)
