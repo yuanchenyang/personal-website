@@ -13,6 +13,12 @@ department at MIT. I am very fortunate to be advised by [Pablo
 Parrilo](https://www.mit.edu/~parrilo){:target="_blank"}. Before coming to MIT,
 I graduated from UC Berkeley with a B.A in Computer Science.
 
+[\[Email\]](mailto:ycy@mit.edu)
+[\[GitHub\]](https://github.com/yuanchenyang){:target="_blank"}
+[\[LinkedIn\]](https://www.linkedin.com/in/chenyang-yuan){:target="_blank"}
+[\[CV\]](/assets/pdfs/cv.pdf){:target="_blank"}
+
+
 Outside of work, my hobbies include participating in [puzzle
 hunts](https://www.mit.edu/~puzzle/){:target="_blank"}, [rock
 climbing](/climbing.html) and other outdoor activities.
