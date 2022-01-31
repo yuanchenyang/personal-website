@@ -18,7 +18,7 @@ Nonnegative Forms on the Sphere" _Preprint_.
 [\[arxiv\]](https://arxiv.org/pdf/2102.13220)
 
 <div><b>Talks:</b></div>
-  - LIDS Student Conference 2021 [\[slides\]](/prod_psd_forms_lidsconf.pdf)
+  - LIDS Student Conference 2021 [\[slides\]](/assets/pdfs/prod_psd_forms_lidsconf.pdf)
   - Fields Workshop on Real Algebraic Geometry and Algorithms for Geometric
-    Constraint Systems 2021 [\[slides\]](/prod_psd_forms_fields.pdf)
+    Constraint Systems 2021 [\[slides\]](/assets/pdfs/prod_psd_forms_fields.pdf)
     [\[video\]](https://youtu.be/SStvrbXmV4E)

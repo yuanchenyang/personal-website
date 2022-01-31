@@ -18,3 +18,4 @@ squares decomposition of a million-degree polynomial in less than 30 minutes.
 
 <div><b>Talks:</b></div>
  - INFORMS 2021 Conference [\[slides\]](/assets/pdfs/INFORMS_Presentation.pdf)
+ - MIT LIDS & Stats Tea Talk 2021 [\[notes\]](/assets/pdfs/sos_sampling_talk.pdf)

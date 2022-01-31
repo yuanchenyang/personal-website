@@ -13,3 +13,6 @@ Series A_, 2021.
 [\[link\]](https://link.springer.com/article/10.1007/s10107-021-01616-3)
 [\[arxiv\]](https://arxiv.org/abs/2002.04149)
 [\[pdf\]](/assets/pdfs/Yuan-Parrilo2021_Article_MaximizingProductsOfLinearForm.pdf)
+
+<div><b>Talks:</b></div>
+  - MIT CS Theory Lunch 2020 [\[notes\]](/assets/pdfs/theorylunch_2020_Feb.pdf)
