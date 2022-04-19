@@ -15,8 +15,8 @@ project
 ticks](https://www.mountainproject.com/user/201277033/chenyang-yuan){:target="_blank"}.
 
 <div class="image-right">
-  <img src="/assets/images/climbing1.jpg" width="320">
-  <img src="/assets/images/climbing2.jpg" width="320">
+  <img src="/assets/images/climbing1.jpg" width="320" alt="Climbing at Smith Rock, photo by Preetum Nakkiran">
+  <img src="/assets/images/climbing2.jpg" width="320" alt="Climbing at Joshua Tree, photo by Preetum Nakkiran">
 </div>
 
 ## 2021 Stats (5/1 to 12/31)
