@@ -16,6 +16,11 @@ gradients in near-linear time (using
 [TrigPolys.jl](/software.html/#/software/03-TrigPolys.jl)), finding the sum of
 squares decomposition of a million-degree polynomial in less than 30 minutes.
 
+Benoît Legat\*, **Chenyang Yuan\*** and Pablo Parrilo. "Low-Rank Univariate Sum of
+Squares Has No Spurious Local Minima" _Preprint_.
+[\[arxiv\]](https://arxiv.org/abs/2205.11466)
+
 <div><b>Talks:</b></div>
+ - ICCOPT 2022 Invited Talk
  - INFORMS 2021 Conference [\[slides\]](/assets/pdfs/INFORMS_Presentation.pdf)
  - MIT LIDS & Stats Tea Talk 2021 [\[notes\]](/assets/pdfs/sos_sampling_talk.pdf)
