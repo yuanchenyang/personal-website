@@ -21,6 +21,6 @@ Squares Has No Spurious Local Minima" _Preprint_.
 [\[arxiv\]](https://arxiv.org/abs/2205.11466)
 
 <div><b>Talks:</b></div>
- - ICCOPT 2022 Invited Talk
- - INFORMS 2021 Conference [\[slides\]](/assets/pdfs/INFORMS_Presentation.pdf)
+ - ICCOPT 2022 Invited Talk [\[slides\]](/assets/pdfs/iccopt_talk.pdf)lo
+ - INFORMS 2021 Invited Talk [\[slides\]](/assets/pdfs/INFORMS_Presentation.pdf)
  - MIT LIDS & Stats Tea Talk 2021 [\[notes\]](/assets/pdfs/sos_sampling_talk.pdf)
