@@ -6,10 +6,12 @@ title: About me
   <img src="/assets/images/chenyang.jpg" width="250">
 </div>
 
-Currently a PhD student in the [Laboratory of Information and Decision Systems
+I am a research scientist at the [Toyota Reseach
+Institute](https://www.tri.global/). I completed my PhD in 2022 at the
+[Laboratory of Information and Decision Systems
 (LIDS)](https://lids.mit.edu/){:target="_blank"} and the [Electrical Engineering
 and Computer Science (EECS)](https://www.eecs.mit.edu/){:target="_blank"}
-department at MIT. I am very fortunate to be advised by [Pablo
+department at MIT, where I was very fortunate to be advised by [Pablo
 Parrilo](https://www.mit.edu/~parrilo){:target="_blank"}. Before coming to MIT,
 I graduated from UC Berkeley with a B.A in Computer Science.
 
