@@ -17,7 +17,7 @@ gradients in near-linear time (using
 squares decomposition of a million-degree polynomial in less than 30 minutes.
 
 Benoît Legat\*, **Chenyang Yuan\*** and Pablo Parrilo. "Low-Rank Univariate Sum of
-Squares Has No Spurious Local Minima" _Preprint_.
+Squares Has No Spurious Local Minima" _To appear in SIAM Journal on Optimization_.
 [\[arxiv\]](https://arxiv.org/abs/2205.11466)
 
 <div><b>Talks:</b></div>

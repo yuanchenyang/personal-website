@@ -5,9 +5,10 @@ intro-title: Research
 ---
 {% capture intro-content %}
 
-I currently do research in convex optimization, with a focus on semidefinite
-relaxations, polynomial and sum of squares optimization, and solving large-scale
-problems.
+My research interests center on convex optimization. I am currently
+investigating the theoretical foundations of generative AI models. I have worked
+on semidefinite relaxations, polynomial and sum of squares optimization, and the
+global landscape of non-convex optimization problems.
 
 {% endcapture %}
 
