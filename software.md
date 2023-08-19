@@ -5,7 +5,7 @@ intro-title: Software
 ---
 
 {% capture intro-content %}
-Some software I created during my undergrad and PhD.
+Some software packages I created.
 {% endcapture %}
 
 
