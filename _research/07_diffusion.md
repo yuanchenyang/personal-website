@@ -28,3 +28,6 @@ Binyang Song, **Chenyang Yuan**, Frank Permenter, Nikos Arechiga and Faez Ahmed,
 "Surrogate Modeling of Car Drag Coefficient with Depth and Normal Renderings",
 _IDETC 2023_.
 [\[arxiv\]](https://arxiv.org/abs/2306.06110)
+
+<div><b>Talks:</b></div>
+ - An optimization perspective on diffusion [\[slides\]](/assets/pdfs/diffusion_presentation_10_04.pdf)
