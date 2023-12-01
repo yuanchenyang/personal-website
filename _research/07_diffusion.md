@@ -21,8 +21,8 @@ Models Using the Euclidean Distance Function" _Preprint_.
 [\[arxiv\]](https://arxiv.org/abs/2306.04848)
 
 Nikos Arechiga\*, Frank Permenter\*, Binyang Song\* and **Chenyang Yuan\***,
-"Drag-guided diffusion models for vehicle image generation", _Preprint_.
-[\[arxiv\]](https://arxiv.org/abs/2306.09935)
+"Drag-guided diffusion models for vehicle image generation", NeurIPS 2023 Workshop on Diffusion Models.
+[\[arxiv\]](https://arxiv.org/abs/2306.09935) [\[poster\]](/assets/pdfs/drag_diffusion_poster.pdf)
 
 Binyang Song, **Chenyang Yuan**, Frank Permenter, Nikos Arechiga and Faez Ahmed,
 "Surrogate Modeling of Car Drag Coefficient with Depth and Normal Renderings",
