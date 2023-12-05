@@ -30,4 +30,4 @@ _IDETC 2023_.
 [\[arxiv\]](https://arxiv.org/abs/2306.06110)
 
 <div><b>Talks:</b></div>
- - Interpreting and improving diffusion models from an optimization perspective [\[slides\]](/assets/pdfs/diffusion_presentation_11_10.pdf)
+ - Interpreting and improving diffusion models from an optimization perspective [\[slides\]](/assets/pdfs/diffusion_presentation_12_05.pdf)
