@@ -1,6 +1,6 @@
 name: Chenyang Yuan's Homepage
-description: Chenyang Yuan's research, software and projects
-meta_description: "Chenyang Yuan's research, software and projects"
+description: Chenyang Yuan's research, software, tutorials and projects
+meta_description: "Chenyang Yuan's research, software, tutorials and projects"
 
 markdown: kramdown
 highlighter: rogue
@@ -14,6 +14,7 @@ collections:
   research:
   software:
   projects:
+  tutorials:
 
 # Details for the RSS feed generator
 url:            'https://www.chenyang.co'

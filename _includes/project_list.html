@@ -16,7 +16,9 @@
       {% else %}
         <div class="image-left">
       {% endif %}
-        <img src="{{ item.image-src }}" width="{{ item.image-width }}">
+        <a  href="{{ item.link }}" target="_blank">
+          <img src="{{ item.image-src }}" width="{{ item.image-width }}">
+        </a>
       </div>
       <div class="text">
         <a  class="project-link" href="{{ item.link }}" target="_blank">
