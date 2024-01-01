@@ -9,14 +9,44 @@ title: Climbing
   img { padding: 5px; }
 </style>
 
+
 I started climbing on and off since 2016 but got into it more seriously
 in 2021. Here are some stats I collected since then. See also my [mountain
 project
 ticks](https://www.mountainproject.com/user/201277033/chenyang-yuan){:target="_blank"}.
 
 <div class="image-right">
-  <img src="/assets/images/climbing3.jpg" width="320" alt="">
-  <img src="/assets/images/climbing4.jpg" width="320" alt="">
+  <img src="/assets/images/climbing5.jpg" width="310" alt="Halfway up Northeast face of Pingora">
+  <img src="/assets/images/climbing6.jpg" width="310" alt="Sport climbing near Jackson, Wyoming">
+</div>
+
+## 2023 Stats
+- Days climbed
+  - Indoors: ~110 (6 months BKB, 6 months CRG)
+  - Outdoors: 33 (161 pitches, 114 Trad, 47 Sport)
+  - Total: ~140 (38%)
+- Sport
+  - Redpoint max: 11d
+  - Onsight max: 11b
+- Trad
+  - Redpoint max: 10b
+  - Onsight max: 10-
+- Alpine climbs
+  - Wyoming (Cirque of the Towers)
+    - [Northeast Face of Pingora](https://www.mountainproject.com/route/105825209/northeast-face)
+    - [Right Crack of Sundance Pinnacle](https://www.mountainproject.com/route/107275949/right-crack)
+
+- Kilter Board Sends
+  - V5: 6
+  - V4: 15
+  - V3: 14
+  - <V3: 17
+
+<div class="image-right">
+  <img src="/assets/images/climbing3.jpg" width="310"
+  alt="Last pitch on Northeast ridge of the Pinnacle">
+  <img src="/assets/images/climbing4.jpg" width="310"
+  alt="View while climbing east ridge of Disappointment Peak">
 </div>
 
 ## 2022 Stats
@@ -45,8 +75,10 @@ ticks](https://www.mountainproject.com/user/201277033/chenyang-yuan){:target="_b
   - <V3: 17
 
 <div class="image-right">
-  <img src="/assets/images/climbing1.jpg" width="320" alt="Climbing at Smith Rock, photo by Preetum Nakkiran">
-  <img src="/assets/images/climbing2.jpg" width="320" alt="Climbing at Joshua Tree, photo by Preetum Nakkiran">
+  <img src="/assets/images/climbing1.jpg" width="310"
+  alt="Sport climbing at Smith Rock, photo by Preetum Nakkiran">
+  <img src="/assets/images/climbing2.jpg" width="310"
+  alt="Sport climbing at Joshua Tree, photo by Preetum Nakkiran">
 </div>
 
 ## 2021 Stats (5/1 to 12/31)
