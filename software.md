@@ -1,6 +1,7 @@
 ---
 layout: default
 title: My Software
+titlebar: Chenyang Yuan's Software
 intro-title: Software
 ---
 

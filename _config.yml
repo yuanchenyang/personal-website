@@ -3,8 +3,13 @@ description: Chenyang Yuan's research, software, tutorials and projects
 meta_description: "Chenyang Yuan's research, software, tutorials and projects"
 
 markdown: kramdown
-highlighter: rogue
+highlighter: rouge
 logo: false
+
+kramdown:
+  input: GFM
+  auto_ids: true
+  syntax_highlighter: rouge
 
 plugins: [jekyll-paginate]
 paginate: 5

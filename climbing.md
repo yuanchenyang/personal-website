@@ -1,6 +1,7 @@
 ---
 layout: page
 title: Climbing
+titlebar: Chenyang Yuan's Climbing Page
 ---
 
 <style>

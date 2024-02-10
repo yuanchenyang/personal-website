@@ -1,6 +1,7 @@
 ---
 layout: default
 title: My Research
+titlebar: Chenyang Yuan's Research
 intro-title: Research
 ---
 {% capture intro-content %}

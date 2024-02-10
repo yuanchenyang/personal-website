@@ -1,6 +1,7 @@
 ---
 layout: default
 title: My Projects
+titlebar: Chenyang Yuan's Projects
 intro-title: Hobby Projects
 ---
 {% capture intro-content %}

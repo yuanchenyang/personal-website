@@ -1,6 +1,7 @@
 ---
 layout: page
 title: About me
+titlebar: Chenyang Yuan's Homepage
 ---
 <div class="image-right-p">
   <img src="/assets/images/chenyang.jpg" width="250">

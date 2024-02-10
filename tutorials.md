@@ -1,6 +1,7 @@
 ---
 layout: default
 title: My Tutorials
+titlebar: Chenyang Yuan's Tutorials
 intro-title: Tutorials
 ---
 
