@@ -177,3 +177,24 @@ h5 {
     color: #555;
     margin-bottom: auto;
 }
+
+figure {
+  text-align: center;
+  font-style: italic;
+  font-size: smaller;
+  text-indent: 0;
+  margin: auto;
+  padding: 0.5em;
+}
+
+.fig-small {
+  max-width: 300px;
+}
+
+.fig-med {
+  max-width: 500px;
+}
+
+.fig-large {
+  max-width: 700px;
+}
