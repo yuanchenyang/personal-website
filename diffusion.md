@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Diffusion models from scratch, using a new theoretical perspective
+title: Diffusion models from scratch, from a new theoretical perspective
 titlebar: "Diffusion models from scratch"
 ---
 
@@ -19,15 +19,21 @@ $$
 Diffusion models have recently produced impressive results in generative
 modeling, in particular sampling from multimodal distributions. Not only has
 diffusion models seen widespread adoption in text-to-image generation tools such
-as Stable Diffusion, they also excel in other application domains (such as
-audio/video/3D generation, protein design, robotics path planning) requiring
+as Stable Diffusion, they also excel in other application domains such as
+[audio](https://text-to-audio.github.io/)/[video](https://openai.com/research/video-generation-models-as-world-simulators)/[3D](https://zero123.cs.columbia.edu/)
+generation, [protein
+design](https://www.nature.com/articles/s41586-023-06415-8), [robotics path
+planning](https://diffusion-policy.cs.columbia.edu/), all of which require
 sampling from multimodal distributions.
 
-Different from the above blog posts, this tutorial aims to introduce diffusion
-models from an optimization perspective. We will both introduce theory and code,
-and show how the theory can lead to simplified code.
+This tutorial aims to introduce diffusion models from an optimization
+perspective as introduced in [our paper][paper-arxiv]. It will go over both
+theory and code, using the theory to explain how to implement diffusion models
+from scratch. By the end of the tutorial, you will learn how to implement
+training and sampling code for a toy dataset, which will also work for larger
+datasets and models.
 
-In this tutorial we will mainly reference and go over code from
+In this tutorial we will mainly reference code from
 [`smalldiffusion`](https://github.com/yuanchenyang/smalldiffusion). For
 pedagogical purposes, the code presented here will be simplified from the
 [original library code][smalldiffusion-src], which is on its own well-commented
@@ -38,16 +44,15 @@ Diffusion models aim to generate samples from a set that is learned from
 training examples, which we will denote by $$\mathcal{K}$$. For example, if we
 want to generate images, $$\mathcal{K} \subset \mathbb{R}^{c\times h \times w}$$
 is the set of pixel values that correspond to realistic images. Diffusion models
-also work for $$\mathcal{K}$$ corresponding to modalities other than images, such
-as audio, video, robot trajectories, and in discrete domains such as text (TODO:
-link).
+also work for $$\mathcal{K}$$ corresponding to modalities other than images,
+such as audio, video, robot trajectories, and even in discrete domains such as
+text generation.
 
-
-Diffusion models are trained by:
+In a nutshell, diffusion models are trained by:
   1. Sampling $$x_0 \sim \mathcal{K}$$, noise level $$\sigma \sim [\sigma_\min,
   \sigma_\max]$$, noise $$\epsilon \sim N(0, I)$$
-  2. Generating $$x_\sigma = x_0 + \sigma \epsilon$$
-  3. Predicting $$\epsilon$$ from $$x_\sigma$$ by minimizing squared loss
+  2. Generating noisy data $$x_\sigma = x_0 + \sigma \epsilon$$
+  3. Predicting $$\epsilon$$ (direction of noise) from $$x_\sigma$$ by minimizing squared loss
 
 This amounts to training a $$\theta$$-parameterized neural network
 $$\epsilon_\theta(x, \sigma)$$, by minimizing the loss function
@@ -57,7 +62,7 @@ $$
 \lVert\epsilon_\theta(x_0 + \sigma_t \epsilon, \sigma_t) - \epsilon \lVert^2
 $$
 
-This can be done by the following simple `training_loop` function:
+In practice, this is done by the following simple `training_loop`:
 
 ```python
 def training_loop(loader  : DataLoader,
@@ -177,7 +182,7 @@ simple two-dimensional embedding works just as well:
 
 {% include figure.html
 file="/assets/images/diffusion/sigma_embedding.png"
-caption="Two-dimensional sigma embedding"
+caption="Two-dimensional \(\sigma_t\) embedding"
 max-width=400
 %}
 
@@ -191,11 +196,30 @@ losses   = [ns.loss.item() for ns in trainer]
 
 {% include figure.html
 file="/assets/images/diffusion/training_loss.png"
-caption="Training loss over 15000 epochs"
+caption="Training loss over 15000 epochs, smoothed with moving average"
 max-width=400
 %}
 
-&nbsp;
+The learned denoiser $$\eps_\theta(x, \sigma)$$ can be visualized as a vector
+field parameterized by the noise level $$\sigma$$, by plotting $$x - \sigma
+\eps_\theta(x, \sigma)$$ for different $$x$$ and levels of $$\sigma$$.
+
+{% include figure.html
+file="/assets/images/diffusion/predicted_eps_field.png"
+caption="Plot of predicted \(\hat{x}_0 = x - \sigma \eps_\theta(x, \sigma)\) for
+different \(x\) and \(\sigma\)"
+max-width=900
+%}
+
+In the plots above, the arrows point from each noisy datapoint $$x$$ to the
+"clean" datapoint predicted by the denoiser with noise level $$\sigma$$. At high
+levels of $$\sigma$$, the denoiser tends to predict the mean of the data, but at
+low noise levels the denoiser predicts actual data points, provided that its
+input $$x$$ is also close to the data.
+
+How do we interpret what the denoiser is learning, and how do we create a
+procedure to sample from diffusion models? We will next build a theory of
+diffusion models, then draw on this theory to derive sampling algorithms.
 
 #### Denoising as approximate projection
 
@@ -295,10 +319,15 @@ class IdealDenoiser:
         return (x - torch.einsum('ij,j...->i...', weights, self.data))/sigma
 ```
 
-For our toy dataset, we can plot $$\epsilon^*$$ as predicted by the ideal
-denoiser for different noise levels $$\sigma$$:
+For our toy dataset, we can plot the direction of $$\epsilon^*$$ as predicted by
+the ideal denoiser for different noise levels $$\sigma$$:
 
-(TODO: add plot of ideal denoiser field)
+{% include figure.html
+file="/assets/images/diffusion/ideal_eps_field.png"
+caption="Plot of direction of \(\eps^*(x, \sigma)\) for different \(x\) and
+\(\sigma\)"
+max-width=900
+%}
 
 From our plots we see that for large values of $$\sigma$$, $$\epsilon^*$$ points
 towards the mean of the data, but for smaller values of $$\sigma$$,
@@ -399,7 +428,8 @@ to the denoiser.
 
 {% include figure.html
 file="/assets/images/diffusion/denoise.png"
-caption="Sampling process iteratively calls the denoiser based on sigma schedule."
+caption="Sampling process iteratively calls the denoiser based on \(\sigma_t\)
+schedule."
 max-width=300
 %}
 
