@@ -526,13 +526,22 @@ caption="Our gradient estimation update step"
 max-width=300
 %}
 
-This leads to faster convergence compared to the DDIM sampler, as seen in our
-toy example below:
+This leads to faster convergence compared to the DDIM sampler, as seen from the
+samples on our toy model lying closer to the original data.
 
 {% include figure.html
 file="/assets/images/diffusion/toy_example_samples_ge.png"
 caption="Samples from 20-step gradient estimation sampler"
 max-width=400
+%}
+
+Compared to the default DDIM sampler, our sampler can be interpreted as adding
+momentum, causing the trajectory to potentially overshoot but converge faster.
+
+{% include figure.html
+file="/assets/images/diffusion/trajectories_varying_gamma.png"
+caption="Sampling trajectories varying momentum term \(\gamma\)"
+max-width=800
 %}
 
 Empirically, adding noise during the generation process also improves the
@@ -610,6 +619,9 @@ model.set_text_condition('An astronaut riding a horse')
 *xts, x0 = samples(model, schedule.sample_sigmas(50))
 decoded  = model.decode_latents(x0)
 ```
+
+We can visualize the different effects of our momentum term $$\gamma$$ on high
+resolution text-to-image generation.
 
 {% include figure.html
 file="/assets/images/diffusion/sd_examples.jpg"
