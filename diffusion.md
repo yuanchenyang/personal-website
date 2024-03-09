@@ -19,7 +19,8 @@ $$
 Diffusion models have recently produced impressive results in generative
 modeling, in particular sampling from multimodal distributions. Not only has
 diffusion models seen widespread adoption in text-to-image generation tools such
-as Stable Diffusion, they also excel in other application domains such as
+as [Stable Diffusion](https://github.com/Stability-AI/stablediffusion), they
+also excel in other application domains such as
 [audio](https://text-to-audio.github.io/)/[video](https://openai.com/research/video-generation-models-as-world-simulators)/[3D](https://zero123.cs.columbia.edu/)
 generation, [protein
 design](https://www.nature.com/articles/s41586-023-06415-8), [robotics path
@@ -121,7 +122,7 @@ class ScheduleLogLinear(Schedule):
 
 Other commonly used schedules include `ScheduleDDPM` for pixel-space diffusion
 models and `ScheduleLDM` for latent diffusion models such as
-StableDiffusion. The following plot compares these three schedules with default
+Stable Diffusion. The following plot compares these three schedules with default
 parameters.
 
 {% include figure.html
@@ -415,7 +416,7 @@ $$
 Intuition from the relative error assumption tells us that we want to start with
 $$(x_T, \sigma_T)$$ where $$\distK(x_T)/\sqrt{n} \approx \sigma_T$$. This is
 achieved by choosing $$\sigma_T$$ to be large relative to the diameter of
-$$\Kset$$, and $$x_T$$ sampled i.i.d. from $$N(0, \sigma_T)$$, a gaussian with
+$$\Kset$$, and $$x_T$$ sampled i.i.d. from $$N(0, \sigma_T)$$, a Gaussian with
 variance $$\sigma_T$$. This ensures that $$x_T$$ is far away from
 $$\Kset$$.
 
