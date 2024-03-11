@@ -151,7 +151,7 @@ For this simple dataset, we can implement the denoiser using a multi-layer
 perceptron (MLP):
 
 ```python
-def get_sigma_embeds(batches, sigma):
+def get_sigma_embeds(sigma):
     return torch.cat([torch.sin(torch.log(sigma)/2),
                       torch.cos(torch.log(sigma)/2)], dim=1)
 
