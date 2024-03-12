@@ -157,6 +157,7 @@ perceptron (MLP):
 
 ```python
 def get_sigma_embeds(sigma):
+    sigma = sigma.unsqueeze(1)
     return torch.cat([torch.sin(torch.log(sigma)/2),
                       torch.cos(torch.log(sigma)/2)], dim=1)
 
@@ -174,8 +175,8 @@ class TimeInputMLP(nn.Module):
         return torch.randn((batchsize,) + self.input_dims)
 
     def forward(self, x, sigma):
-        sigma_embeds = get_sigma_embeds(x.shape[0], sigma.squeeze()) # shape: b x 2
-        nn_input = torch.cat([x, sigma_embeds], dim=1)               # shape: b x (dim + 2)
+        sigma_embeds = get_sigma_embeds(sigma)         # shape: b x 2
+        nn_input = torch.cat([x, sigma_embeds], dim=1) # shape: b x (dim + 2)
         return self.net(nn_input)
 
 model = TimeInputMLP(dim=2, hidden_dims=(16,128,128,128,128,16))
