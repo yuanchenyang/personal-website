@@ -512,20 +512,23 @@ caption="Samples from 20-step DDIM"
 max-width=400
 %}
 
-&nbsp;
+We see that most samples lie close to the original data, but there is room for
+improvement. One way is to increase the number of DDIM steps, but this incurs an
+additional computational cost. Next, we use our interpretation of diffusion
+models to derive a more efficient sampler.
 
 #### Improved sampler with gradient estimation
 
-Next, we use our interpretation to derive a new efficient sampler. Since
-$$\nabla \distK(x)$$ is invariant between $$x$$ and $$\projK(x)$$, we aim to
-minimize estimation error $$\sqrt{n} \nabla \distK(x) - \epsilon_{\theta}(x_t,
-\sigma_t)$$ with the update:
+Since $$\nabla \distK(x)$$ is invariant between $$x$$ and $$\projK(x)$$, we aim
+to minimize estimation error $$\sqrt{n} \nabla \distK(x) -
+\epsilon_{\theta}(x_t, \sigma_t)$$ with the update:
 
 $$
 \bar\eps_t = \gamma \eps_{\theta}(x_t, \sigma_t) + (1-\gamma) \eps_{\theta}(x_{t+1}, \sigma_{t+1})
 $$
 
-Intuitively, this update corrects any error made in the previous step using the current estimate:
+Intuitively, this update corrects any error made in the previous step using the
+current estimate:
 
 {% include figure.html
 file="/assets/images/diffusion/ge_step.png"
@@ -565,7 +568,8 @@ If we assume that $$\mathop{\mathbb{E}}\norm{w_t}^2 = \norm{\epsilon_\theta(x_t,
 constant in expectation. This leads to the choice of $$\sigma_{t-1} =
 \sigma_t^\mu \sigma_{t-1}^{1-\mu}$$ and $$\eta = \sqrt{\sigma_{t-1}^2 -
 \sigma_{t'}^2}$$ where $$0 \le \mu < 1$$. When $$\mu = \frac{1}{2}$$, we exactly
-recover the [DDPM sampler](https://arxiv.org/abs/2006.11239).
+recover the [DDPM sampler](https://arxiv.org/abs/2006.11239) (see [Appendix A of
+our paper][paper-arxiv] for a derivation).
 
 {% include figure.html
 file="/assets/images/diffusion/trajectories_varying_mu.png"
@@ -632,7 +636,7 @@ resolution text-to-image generation.
 
 {% include figure.html
 file="/assets/images/diffusion/sd_examples.jpg"
-caption="Samples from a pretrained stable diffusion model"
+caption="Text-to-image samples using Stable Diffusion"
 max-width=800
 %}
 
