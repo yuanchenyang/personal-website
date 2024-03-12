@@ -649,6 +649,18 @@ Also recommended are the following blog posts on diffusion models:
  3. [The annotated diffusion model][blog-annotated]{:target="_blank"} goes over
     a pytorch implementation of a diffusion model in detail
 
+#### Citation
+
+If you found this blog useful, please consider citing our paper:
+
+```
+@article{permenter2023interpreting,
+  title={Interpreting and improving diffusion models using the euclidean distance function},
+  author={Permenter, Frank and Yuan, Chenyang},
+  journal={arXiv preprint arXiv:2306.04848},
+  year={2023}
+}
+```
 
 [blog-annotated]: https://huggingface.co/blog/annotated-diffusion
 [blog-weng]:      https://lilianweng.github.io/posts/2021-07-11-diffusion-models/
