@@ -1,7 +1,7 @@
 ---
-name: Sum of Squares
+name: Sum-of-squares optimization
 image-src: assets/images/sos.png
-image-width: 350
+image-width: 330
 link: https://sums-of-squares.github.io/sos/
 ---
 

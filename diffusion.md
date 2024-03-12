@@ -1,7 +1,12 @@
 ---
 layout: page
 title: Diffusion models from scratch, from a new theoretical perspective
-titlebar: "Diffusion models from scratch"
+titlebar: Diffusion models from scratch
+meta_title: Diffusion models from scratch
+meta_description: This tutorial aims to give a gentle introduction to diffusion models, with a running example to illustrate how to build, train and sample from a simple diffusion model from scratch.
+meta_type: article
+meta_image: https://www.chenyang.co/assets/images/diffusion_screenshot.png
+meta_url: https://www.chenyang.co/diffusion.html
 ---
 
 $$

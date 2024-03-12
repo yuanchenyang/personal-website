@@ -11,6 +11,26 @@
     <meta name="MobileOptimized" content="320" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    {% if page.meta_title %}
+    <meta property="og:title" content="{{ page.meta_title }}" />
+    {% endif %}
+    {% if page.meta_description %}
+    <meta property="og:description" content="{{ page.meta_description }}" />
+    {% endif %}
+    {% if page.meta_type %}
+    <meta property="og:type" content="{{ page.meta_type }}" />
+    {% endif %}
+    {% if page.meta_url %}
+    <meta property="og:url" content="{{ page.meta_url }}" />
+    {% endif %}
+    {% if page.meta_image %}
+    <meta property="og:image" content="{{ page.meta_image }}" />
+    {% endif %}
+    {% if page.twitter_card %}
+    <meta name="twitter:card" content="{{ page.twitter_card }}">
+    {% endif %}
+
+
     <meta charset="UTF-8">
 
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">

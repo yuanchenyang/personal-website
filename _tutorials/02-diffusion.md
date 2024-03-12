@@ -1,5 +1,5 @@
 ---
-name: Diffusion models
+name: Diffusion models from scratch
 image-src: assets/images/diffusion/denoise.png
 image-width: 280
 link: /diffusion.html
