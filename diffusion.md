@@ -33,11 +33,12 @@ planning](https://diffusion-policy.cs.columbia.edu/), all of which require
 sampling from multimodal distributions.
 
 This tutorial aims to introduce diffusion models from an optimization
-perspective as introduced in [our paper][paper-arxiv]. It will go over both
-theory and code, using the theory to explain how to implement diffusion models
-from scratch. By the end of the tutorial, you will learn how to implement
-training and sampling code for a toy dataset, which will also work for larger
-datasets and models.
+perspective as introduced in [our paper][paper-arxiv] (joint work with [Frank
+Permenter](https://www.mit.edu/~fperment/)). It will go over both theory and
+code, using the theory to explain how to implement diffusion models from
+scratch. By the end of the tutorial, you will learn how to implement training
+and sampling code for a toy dataset, which will also work for larger datasets
+and models.
 
 In this tutorial we will mainly reference code from
 [`smalldiffusion`](https://github.com/yuanchenyang/smalldiffusion). For
