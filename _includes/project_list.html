@@ -16,12 +16,12 @@
       {% else %}
         <div class="image-left">
       {% endif %}
-        <a  href="{{ item.link }}" target="_blank">
+        <a  href="{{ item.link }}">
           <img src="{{ item.image-src }}" width="{{ item.image-width }}">
         </a>
       </div>
       <div class="text">
-        <a  class="project-link" href="{{ item.link }}" target="_blank">
+        <a  class="project-link" href="{{ item.link }}">
           <h3> {{ item.name }} </h3>
         </a>
         {{ item.content | markdownify }}
