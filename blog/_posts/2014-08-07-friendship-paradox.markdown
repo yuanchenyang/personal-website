@@ -3,6 +3,7 @@ layout: post
 title:  "The Friendship Paradox"
 date:   2014-08-07 00:00:00
 categories: math
+jquery: true
 ---
 
 Let's suppose that you ask all your friends how many friends they have, and
