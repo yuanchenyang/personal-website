@@ -573,8 +573,9 @@ $$
 If we assume that $$\mathop{\mathbb{E}}\norm{w_t}^2 = \norm{\epsilon_\theta(x_t,
 \sigma_t)}^2$$, we should choose $$\eta$$ so that the norm of the update is
 constant in expectation. This leads to the choice of $$\sigma_{t-1} =
-\sigma_t^\mu \sigma_{t'}^{1-\mu}$$ and $$\eta = \sqrt{\sigma_{t-1}^2 -
-\sigma_{t'}^2}$$ where $$0 \le \mu < 1$$. When $$\mu = \frac{1}{2}$$, we exactly
+\sigma_t^\mu \sigma_{t'}^{1-\mu}$$ where $$0 \le \mu < 1$$ (by definition,
+$$\sigma_{t'} \le \sigma_{t-1} \le \sigma_t$$), and $$\eta =
+\sqrt{\sigma_{t-1}^2 - \sigma_{t'}^2}$$. When $$\mu = \frac{1}{2}$$, we exactly
 recover the [DDPM sampler](https://arxiv.org/abs/2006.11239) (see [Appendix A of
 our paper][paper-arxiv] for a derivation).
 
