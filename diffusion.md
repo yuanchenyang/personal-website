@@ -23,9 +23,18 @@ $$
 
 <p style="margin-top:0px; margin-bottom:0px;">
 <small>
+<a href="https://arxiv.org/abs/2306.04848">Paper (ICML 2024)</a> &nbsp;
+<a href="https://github.com/yuanchenyang/smalldiffusion">Code (Github)</a>
+</small>
+</p>
+
+<p style="margin-top:0px; margin-bottom:0px;">
+<small>
 <a href="https://news.ycombinator.com/item?id=39672450">Discussion on HackerNews</a>
 </small>
 </p>
+
+
 
 Diffusion models have recently produced impressive results in generative
 modeling, in particular sampling from multimodal distributions. Not only has

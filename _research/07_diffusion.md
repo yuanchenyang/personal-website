@@ -17,7 +17,7 @@ constraints (such as minimizing the drag coefficient of vehicle images) into the
 generation process.
 
 Frank Permenter\* and **Chenyang Yuan\***. "Interpreting and Improving Diffusion
-Models Using the Euclidean Distance Function" _Preprint_.
+Models from an Optimization Perspective" [_ICML 2024_](https://icml.cc/virtual/2024/poster/33099).
 [\[arxiv\]](https://arxiv.org/abs/2306.04848)
 
 Nikos Arechiga\*, Frank Permenter\*, Binyang Song\* and **Chenyang Yuan\***,
