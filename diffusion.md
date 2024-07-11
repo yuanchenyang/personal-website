@@ -675,11 +675,13 @@ Also recommended are the following blog posts on diffusion models:
 If you found this blog useful, please consider citing our paper:
 
 ```
-@article{permenter2023interpreting,
-  title={Interpreting and improving diffusion models using the euclidean distance function},
-  author={Permenter, Frank and Yuan, Chenyang},
-  journal={arXiv preprint arXiv:2306.04848},
-  year={2023}
+@inproceedings{
+permenter2024interpreting,
+title={Interpreting and Improving Diffusion Models from an Optimization Perspective},
+author={Frank Permenter and Chenyang Yuan},
+booktitle={Forty-first International Conference on Machine Learning},
+year={2024},
+url={https://openreview.net/forum?id=o2ND9v0CeK}
 }
 ```
 

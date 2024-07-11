@@ -18,7 +18,7 @@ generation process.
 
 Frank Permenter\* and **Chenyang Yuan\***. "Interpreting and Improving Diffusion
 Models from an Optimization Perspective" [_ICML 2024_](https://icml.cc/virtual/2024/poster/33099).
-[\[arxiv\]](https://arxiv.org/abs/2306.04848)
+[\[arxiv\]](https://arxiv.org/abs/2306.04848) [\[poster\]](/assets/images/icml-2024-poster.png) [\[code\]](https://github.com/ToyotaResearchInstitute/gradient-estimation-sampler)
 
 Nikos Arechiga\*, Frank Permenter\*, Binyang Song\* and **Chenyang Yuan\***,
 "Drag-guided diffusion models for vehicle image generation", NeurIPS 2023 Workshop on Diffusion Models.
