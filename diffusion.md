@@ -23,7 +23,7 @@ $$
 
 <p style="margin-top:0px; margin-bottom:0px;">
 <small>
-<a href="https://arxiv.org/abs/2306.04848">Paper (ICML 2024)</a> &nbsp;
+<a href="https://proceedings.mlr.press/v235/permenter24a.html">Paper (ICML 2024)</a> &nbsp;
 <a href="https://github.com/yuanchenyang/smalldiffusion">Code (Github)</a>
 </small>
 </p>

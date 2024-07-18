@@ -17,7 +17,7 @@ constraints (such as minimizing the drag coefficient of vehicle images) into the
 generation process.
 
 Frank Permenter\* and **Chenyang Yuan\***. "Interpreting and Improving Diffusion
-Models from an Optimization Perspective" [_ICML 2024_](https://icml.cc/virtual/2024/poster/33099).
+Models from an Optimization Perspective" [_ICML 2024_](https://proceedings.mlr.press/v235/permenter24a.html).
 [\[arxiv\]](https://arxiv.org/abs/2306.04848) [\[poster\]](/assets/images/icml-2024-poster.png) [\[code\]](https://github.com/ToyotaResearchInstitute/gradient-estimation-sampler)
 
 Nikos Arechiga\*, Frank Permenter\*, Binyang Song\* and **Chenyang Yuan\***,
