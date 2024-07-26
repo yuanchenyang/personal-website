@@ -22,3 +22,5 @@ Nonnegative Forms on the Sphere" _Preprint_.
   - Fields Workshop on Real Algebraic Geometry and Algorithms for Geometric
     Constraint Systems 2021 [\[slides\]](/assets/pdfs/prod_psd_forms_fields.pdf)
     [\[video\]](https://youtu.be/SStvrbXmV4E)
+
+  - ISMP 2024 [\[slides\]](/assets/pdfs/ismp_2024_talk.pdf)
