@@ -219,7 +219,7 @@ $$
 
 Assume that we are in a regime where the dimension of $$x_i$$ and $$w$$ is much
 larger (possibly infinite) than the number of datapoints $$n$$. We can, however,
-drastically reduce the size of the problem with the following observation
+drastically reduce the size of the problem with the following observation:
 
 **Proposition (Invariance under projection):** Let $$P$$ be the orthogonal
 projection onto the subspace spanned by $$x_1, \ldots, x_n$$. For any $$w$$ we have:
@@ -300,8 +300,12 @@ $$
 
 Since this problem is also convex and invariant under orthogonal projection to
 the span of the data $$x_i$$, we can apply the same symmetry reduction
-(substituting $$w = Xc$$) as before to reduce its dimension. Unlike the usual
-derivation, we do not need to take the dual of the problem first.
+(substituting $$w = Xc$$) as before to reduce its dimension.
+
+Typically, deriving kernel SVM requires taking the dual of the above
+optimization problem, so that $$\dotp{x_i, x_j}$$ appears in the objective. This
+suggests that the dual formulation is essential for the kernel trick to
+work. In the diagram below, we see that this is not the case: Kernelization (symmetry reduction) can be applied to both the primal and dual forms of the problem, and the resulting reduced-size problems are dual to each other.
 
 $$
 \begin{array}{lcl}
@@ -341,10 +345,17 @@ $$
 Where $$X = [ x_1 \cdots x_n]$$, $$K_{ij} = \dotp{x_i, x_j}$$, $$K_i$$ is the
 $$i$$-th column of $$K$$, and $$\circ$$ denotes the elementwise Hadamard product.
 
-**Is convexity necessary?** Convexity is actually not necessary, you only need a
-map of any point to a fixed-point subspace that decreases the function value.
+**Is convexity necessary?** Due to the special structure of these machine
+learning problems, we can generalize the above symmetry reduction arguments to
+remove the need for convexity. In the above problems, the optimization variable
+$$w$$ appears only through $$f(w) = \dotp{x_i, w}$$ and $$g(w) =
+\norm{w}^2$$. The orthogonal projection map $$w \mapsto Pw$$ only changes the
+value of $$g(w)$$, so as long as $$g(Pw) \le g(w)$$, we can apply symmetry
+reduction and restrict to the span of $$x_i$$. Extending this line of reasoning
+leads to various [representer
+theorems](https://en.wikipedia.org/wiki/Representer_theorem).
 
-#### Symmetry reduction in semidefinite programs
+#### Application: Symmetry reduction in semidefinite programs
 
 #### References and other resources
 
@@ -352,13 +363,14 @@ This article began as [scribe notes](/assets/pdfs/symmetry-scribe-notes.pdf) of
 Pablo Parrilo's lecture for the class [Proofs, beliefs and algorithms through
 the lens of Sum of Squares in Fall 2016](https://www.boazbarak.org/sos/).
 
-[Waterhouse, W. C. (1983). Do Symmetric Problems Have Symmetric Solutions? The American Mathematical Monthly.](https://www.jstor.org/stable/2975573)
+[*Do symmetric problems have symmetric solutions?* Waterhouse (1983) ](https://www.jstor.org/stable/2975573)
 
-[Gatermann, K., & Parrilo, P. A. (2004). Symmetry groups, semidefinite programs, and sums of squares. Journal of Pure and Applied Algebra.][sos-symmetry-paper]
+[*Symmetry groups, semidefinite programs, and sums of
+squares.* Gatermann & Parrilo (2004)][sos-symmetry-paper]
 
-[A Generalized Representer Theorem](https://alex.smola.org/papers/2001/SchHerSmo01.pdf)
+[*A generalized representer theorem.* Schölkopf, Herbrich, & Smola (2001)](https://alex.smola.org/papers/2001/SchHerSmo01.pdf)
 
-[A Unifying View of Representer Theorems](http://proceedings.mlr.press/v32/argyriou14.pdf)
+[*A unifying view of representer theorems.* Argyriou & Dinuzzo (2014) ](http://proceedings.mlr.press/v32/argyriou14.pdf)
 
 [sos-symmetry-paper]: https://arxiv.org/abs/math/0211450
 [linear-forms-permenants-paper]: /assets/pdfs/Yuan-Parrilo2021_Article_MaximizingProductsOfLinearForm.pdf
