@@ -3,9 +3,9 @@ layout: page
 title: Symmetry, invariance, and the kernel trick
 titlebar: Symmetry, invariance, and the kernel trick
 meta_title: Symmetry, invariance, and the kernel trick
-meta_description:
+meta_description: When do symmetric optimization problems have symmetric solutions? In this article I will explore the interaction of symmetry and convexity, with applications to probabilistic inequalities, semidefinite programs and linear classification/regression problems. A common theme is identifying invariant subspaces containing optimal solutions, and reducing the problem domain to these subspaces. In particular, I will show that the kernel "trick" (and in general, representer theorems) can be derived by applying a reduction to an invariant subspace.
 meta_type: article
-meta_image: https://www.chenyang.co/assets/images/symmetry.png
+meta_image: https://www.chenyang.co/assets/images/symmetry/meta_image.png
 meta_url: https://www.chenyang.co/symmetry.html
 ---
 
@@ -97,7 +97,7 @@ $$f(0) = f\paren{\frac{1}{2}x + \frac{1}{2}(-x)}
 \le \frac{1}{2} f(x) + \frac{1}{2}f(-x) = f(x).
 $$
 
- {% include figure.html
+{% include figure.html
 file="/assets/images/symmetry/sym_cvx_avg.png"
 caption="A pictorial proof of the averaging argument for convex \(f\)"
 %}
@@ -516,9 +516,6 @@ Parrilo (2004)][sos-symmetry-paper]
 
 [*A unifying view of representer theorems.* Argyriou & Dinuzzo (2014)
 ](http://proceedings.mlr.press/v32/argyriou14.pdf)
-
-
-
 
 [sos-symmetry-paper]: https://arxiv.org/abs/math/0211450
 [linear-forms-permenants-paper]: /assets/pdfs/Yuan-Parrilo2021_Article_MaximizingProductsOfLinearForm.pdf
