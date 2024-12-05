@@ -165,7 +165,7 @@ $$R_\rho(x) := \frac{1}{|G|} \sum_{g \in G} \rho(g) x$$
 
 _The fixed-point subspace of $$\rho$$ is the image of $$V$$ under $$R$$:_
 
-$$R_\rho(V) = \mathcal{F}_\rho := \{x \mid x = \rho(g) x, \forall \rho \in G \}$$
+$$R_\rho(V) = \mathcal{F}_\rho := \{x \mid x = \rho(g) x, \forall g \in G \}$$
 
 We can think of $$R_\rho(x)$$ as a symmetrizing projection map that sends any
 point $$x$$ to a fixed-point obtained by averaging over all the symmetries of
@@ -380,9 +380,9 @@ projection onto the subspace spanned by $$x_1, \ldots, x_n$$ and $$g(w) =
 $$g(Pw) = g(w)$$
 
 Thus by invariance reduction, **we can instead minimize f(w) on the span of the
-data $$x_1, \ldots, x_n$$**. This is a (much smaller) subspace of dimension
-$$n$$. In fact, we can parameterize this subspace with a linear combination of
-the data:
+data $$x_1, \ldots, x_n$$**. This is a (often much smaller) subspace of
+dimension $$n$$. In fact, we can parameterize this subspace with a linear
+combination of the data:
 
 $$ \mathcal{F}_P = \braces{X c = \sum_{i=1}^n c_i x_i \mid c \in \R^n }$$
 
@@ -399,7 +399,9 @@ Where $$K = X^\top X \in \R^{n \times n}$$ is the *kernel matrix* with size
 determined by the number of $$x_i$$, not the dimension of $$x_i$$. The solution
 has a closed form, $$c = (K + \lambda I)^{-1} y$$. Thus, we can see that the
 **kernel trick is an application of invariance reduction using orthogonal
-projections onto the span of data**.
+projections onto the span of data**. The procedure of restricting the domain of
+an optimization problem to the span of data then replacing $$\dotp{x_i, x_j}$$
+with $$K_{ij}$$ is called *kernelization*.
 
 I think this is a more natural way of deriving kernel ridge regression than the
 usual method of first writing down the normal equation to get $$X^\top w =
