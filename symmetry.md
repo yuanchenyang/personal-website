@@ -3,10 +3,11 @@ layout: page
 title: Symmetry, invariance, and the kernel trick
 titlebar: Symmetry, invariance, and the kernel trick
 meta_title: Symmetry, invariance, and the kernel trick
-meta_description: When do symmetric optimization problems have symmetric solutions? In this article I will explore the interaction of symmetry and convexity, with applications to probabilistic inequalities, semidefinite programs and linear classification/regression problems. A common theme is identifying invariant subspaces containing optimal solutions, and reducing the problem domain to these subspaces. In particular, I will show that the kernel "trick" (and in general, representer theorems) can be derived by applying a reduction to an invariant subspace.
+meta_description: When do symmetric optimization problems have symmetric solutions? We often can identify invariant subspaces containing optimal solutions, then restricting the problem domain to these subspaces. Finally I show that the kernel "trick" can be derived by applying a restriction to an invariant subspace.
 meta_type: article
 meta_image: https://www.chenyang.co/assets/images/symmetry/meta_image.png
 meta_url: https://www.chenyang.co/symmetry.html
+twitter_card: summary_large_image
 ---
 
 $$
