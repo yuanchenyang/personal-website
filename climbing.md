@@ -17,6 +17,32 @@ project
 ticks](https://www.mountainproject.com/user/201277033/chenyang-yuan){:target="_blank"}.
 
 <div class="image-right">
+  <img src="/assets/images/climbing7.jpg" width="260"
+  alt="Looking at El Cap from east buttress of Middle Cathedral">
+  <img src="/assets/images/climbing8.jpg" width="260" alt="After the chimneys of Epinephrine">
+</div>
+
+## 2024 Stats
+- Days climbed
+  - Indoors: 103
+  - Outdoors: 52 (294 pitches, 203 Trad, 88 Sport, 3 ice)
+  - Total: 155 (42%)
+- Sport
+  - Redpoint max: 12a
+  - Onsight max: 11c
+- Trad
+  - Redpoint max: 10b/c
+  - Onsight max: 10a
+- Featured climbs
+  - [East Buttress of Middle Cathedral (Yosemite)](https://www.mountainproject.com/route/105915125/east-buttress)
+  - [Epinephrine (Red Rocks)](https://www.mountainproject.com/route/105732422/epinephrine)
+- Kilter Board Sends
+  - V6: 2
+  - V5: 11
+  - V4: 23
+  - <V4: 32
+
+<div class="image-right">
   <img src="/assets/images/climbing5.jpg" width="310" alt="Halfway up Northeast face of Pingora">
   <img src="/assets/images/climbing6.jpg" width="310" alt="Sport climbing near Jackson, Wyoming">
 </div>
@@ -32,7 +58,7 @@ ticks](https://www.mountainproject.com/user/201277033/chenyang-yuan){:target="_b
 - Trad
   - Redpoint max: 10b
   - Onsight max: 10-
-- Alpine climbs
+- Featured climbs
   - Wyoming (Cirque of the Towers)
     - [Northeast Face of Pingora](https://www.mountainproject.com/route/105825209/northeast-face)
     - [Right Crack of Sundance Pinnacle](https://www.mountainproject.com/route/107275949/right-crack)
@@ -61,7 +87,7 @@ ticks](https://www.mountainproject.com/user/201277033/chenyang-yuan){:target="_b
 - Trad
   - Redpoint max: 10-
   - Onsight max: 9+
-- Alpine climbs
+- Featured climbs
   - New England
     - [Northeast Ridge of the Pinnacle](https://www.mountainproject.com/route/106304119/northeast-ridge-of-the-pinnacle)
     - [Witney-Gilman Ridge](https://www.mountainproject.com/route/105872668/whitney-gilman-ridge)
