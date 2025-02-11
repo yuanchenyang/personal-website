@@ -230,7 +230,7 @@ These fixed-point subspaces for semidefinite matrices have a very specific form:
 $$F$$ will become block diagonal after a change of coordinates. This comes from
 us being able to write the representation $$\rho$$ as a direct sum of
 irreducible representations. We will not formally prove this and refer readers
-to Section 4 of [Gatermann and Parrilo](sos-symmetry-paper). An important
+to Section 4 of [Gatermann and Parrilo][sos-symmetry-paper]. An important
 consequence of this transformation is that the optimization variable matrix
 $$X$$ is replaced with smaller individual blocks, thus reducing the size of the
 problem.
