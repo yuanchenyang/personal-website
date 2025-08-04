@@ -1,6 +1,6 @@
 ---
 title: Maximizing Products of Linear Forms, and The Permanent of Positive Semidefinite Matrices
-authors: "Chenyang Yuan and Pablo Parrilo"
+authors: Chenyang Yuan and Pablo Parrilo
 alphabetical: false
 first-author: true
 year: 2022
