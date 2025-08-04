@@ -1,5 +1,6 @@
 ---
 title: Permanent Approximation
+research-category: Permanent Approximation
 ---
 
 We found a connection between approximating the permanent of a PSD matrix and

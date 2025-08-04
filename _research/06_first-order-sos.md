@@ -1,5 +1,6 @@
 ---
 title: Global Landscape of Low-Rank Sum of Squares
+research-category: Global Landscape of Non-Convex Problems
 ---
 
 <div class="image-right-p">

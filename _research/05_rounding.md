@@ -1,5 +1,6 @@
 ---
 title: Rounding Convex Relaxations of Quadratic Maps
+research-category: Rounding Convex Relaxations of Quadratic Maps
 ---
 
 <div class="image-right-p">

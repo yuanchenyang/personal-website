@@ -1,0 +1,96 @@
+<div class="project-list">
+  <li class="project-item">
+    <div class="text">
+      <div class="tab-container">
+        <div class="tab-buttons">
+          <button class="tab-button active" onclick="showTab('date')">By Date</button>
+          <button class="tab-button" onclick="showTab('research')">By Research Topic</button>
+          <button class="tab-button" onclick="showTab('venue')">By Type</button>
+        </div>
+
+        <!-- By Date Tab -->
+        <div id="date-tab" class="tab-content active">
+          {% assign sorted_papers = site.papers | sort: 'year' | reverse %}
+          {% assign year_groups = sorted_papers | group_by: 'year'  %}
+          {% for year_group in year_groups %}
+            <div class="category-header">{{ year_group.name }}</div>
+            {% assign sorted_papers = year_group.items %}
+            {% for paper in sorted_papers %}
+              {% include paper_item.html %}
+            {% endfor %}
+          {% endfor %}
+        </div>
+
+        <!-- By Venue Tab -->
+        <div id="venue-tab" class="tab-content">
+          {% assign venue_groups = site.papers | group_by: 'venue-category' %}
+          {% assign ordered_venue_groups = '' | split: '' %}
+
+          <!-- Only include venue groups that are in the config order -->
+          {% for venue_order in site.paper_venue_order %}
+            {% for venue_group in venue_groups %}
+              {% if venue_group.name == venue_order %}
+                {% assign ordered_venue_groups = ordered_venue_groups | push: venue_group %}
+                {% break %}
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+
+          {% for venue_group in ordered_venue_groups %}
+            <div class="category-header">{{ venue_group.name }}</div>
+            {% assign sorted_papers = venue_group.items | sort: 'year' | reverse %}
+            {% for paper in sorted_papers %}
+              {% include paper_item.html %}
+            {% endfor %}
+          {% endfor %}
+        </div>
+
+        <!-- By Research Topic Tab -->
+        <div id="research-tab" class="tab-content">
+          {% assign research_groups = site.papers | group_by: 'research-category' %}
+          {% assign ordered_research_groups = '' | split: '' %}
+
+          <!-- Only include research groups that are in the config order -->
+          {% for research_order in site.paper_category_order %}
+            {% for research_group in research_groups %}
+              {% if research_group.name == research_order %}
+                {% assign ordered_research_groups = ordered_research_groups | push: research_group %}
+                {% break %}
+              {% endif %}
+            {% endfor %}
+          {% endfor %}
+
+          {% for research_group in ordered_research_groups %}
+            <div class="category-header">{{ research_group.name }}</div>
+            {% assign sorted_papers = research_group.items | sort: 'year' | reverse %}
+            {% for paper in sorted_papers %}
+              {% include paper_item.html %}
+            {% endfor %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </li>
+</div>
+
+<script>
+function showTab(tabName) {
+  // Hide all tab contents
+  var tabContents = document.getElementsByClassName('tab-content');
+  for (var i = 0; i < tabContents.length; i++) {
+    tabContents[i].classList.remove('active');
+  }
+
+  // Remove active class from all tab buttons
+  var tabButtons = document.getElementsByClassName('tab-button');
+  for (var i = 0; i < tabButtons.length; i++) {
+    tabButtons[i].classList.remove('active');
+  }
+
+  // Show the selected tab content
+  document.getElementById(tabName + '-tab').classList.add('active');
+
+  // Add active class to the clicked button
+  event.target.classList.add('active');
+}
+</script>

@@ -22,6 +22,25 @@ collections:
   software:
   projects:
   tutorials:
+  papers:
+
+# Order for paper tabs
+paper_venue_order:
+ - Journal
+ - Conference
+ - Workshop
+ - Preprint
+ - Thesis
+
+paper_category_order:
+ - Theoretical Foundations of Diffusion Models
+ - Global Landscape of Non-Convex Problems
+ - AI for Engineering Design
+ - Rounding Convex Relaxations of Quadratic Maps
+ - Permanent Approximation
+ - Control of Queueing Networks
+ - Thesis
+ - Misc Science
 
 # Details for the RSS feed generator
 url:            'https://www.chenyang.co'

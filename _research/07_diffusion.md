@@ -1,5 +1,6 @@
 ---
 title: Theoretical Foundations of Diffusion Models
+research-category: Theoretical Foundations of Diffusion Models
 ---
 
 <div class="image-right-p">

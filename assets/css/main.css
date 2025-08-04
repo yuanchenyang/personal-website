@@ -198,3 +198,113 @@ figure {
 .fig-large {
   max-width: 700px;
 }
+
+
+.tab-container {
+  margin: 0;
+  width: 100%;
+}
+
+.tab-buttons {
+  display: flex;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 20px;
+  background-color: white;
+}
+
+.tab-button {
+  background: none;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s ease;
+  color: #0072C1;
+  font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
+.tab-button:hover {
+  color: #0f588b;
+}
+
+.tab-button.active {
+  color: #0f588b;
+  border-bottom-color: #0f588b;
+}
+
+.tab-content {
+  display: none;
+  background-color: white;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.paper-item {
+  padding: 5px 0;
+  border-left: 3px solid #eee;
+  transition: border-color 0.3s ease;
+  padding-left: 15px;
+}
+
+.paper-item:hover {
+  border-left-color: #333;
+}
+
+.paper-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  font-family: 'Noto Serif', serif;
+}
+
+.paper-authors {
+  font-size: 14px;
+  color: #666;
+  font-family: 'Noto Serif', serif;
+}
+
+.paper-venue {
+  font-size: 14px;
+  color: #888;
+  font-family: 'Noto Serif', serif;
+}
+
+.paper-links {
+  font-size: 14px;
+}
+
+.paper-links a {
+  color: #0066cc;
+  text-decoration: none;
+  margin-left: 15px;
+  font-family: 'Noto Serif', serif;
+}
+
+.paper-links a:hover {
+  text-decoration: underline;
+}
+
+.category-header {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 30px 0 15px 0;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #333;
+  color: #333;
+  font-family: 'Noto Serif', serif;
+}
+
+.date-header {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 25px 0 10px 0;
+  color: #555;
+  font-family: 'Noto Serif', serif;
+}
+
+.year-papers {
+  margin-bottom: 20px;
+}

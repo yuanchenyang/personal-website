@@ -1,5 +1,6 @@
 ---
 title: Control of Queueing Networks
+research-category: Control of Queueing Networks
 ---
 
 Undergrad research in Alex Bayen's group at UC Berkeley studying the effect of

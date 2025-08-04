@@ -1,0 +1,11 @@
+<ul class="project-list">
+
+  {% for item in paper_list %}
+  <li class="project-item" id="{{ page.id }}">
+    <div class="text">
+      <h4> {{ item.title }}</h4>
+      {{ item.content | markdownify }}
+    </div>
+  </li>
+  {% endfor %}
+</ul>
