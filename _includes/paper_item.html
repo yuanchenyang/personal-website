@@ -11,6 +11,9 @@
     {% endif %}
 
     <span class="paper-links">
+    {% if paper.code-url %}
+      <a href="{{ paper.website-url }}" target="_blank">[website]</a>
+    {% endif %}
     {% if paper.preprint-url %}
       <a href="{{ paper.preprint-url }}" target="_blank">[{{ paper.preprint-type }}]</a>
     {% endif %}
