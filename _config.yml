@@ -23,6 +23,7 @@ collections:
   projects:
   tutorials:
   papers:
+  talks:
 
 # Order for paper tabs
 paper_venue_order:

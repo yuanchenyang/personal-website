@@ -24,4 +24,8 @@ generation process.
 {% endfor %}
 
 <div><b>Talks:</b></div>
- - Interpreting and improving diffusion models from an optimization perspective [\[slides\]](/assets/pdfs/diffusion_presentation_06_14.pdf)
+
+{% assign talks = site.talks | where: "research-category", page.research-category | sort: "year" | reverse %}
+{% for talk in talks %}
+{% include talk_item_short.html %}
+{% endfor %}

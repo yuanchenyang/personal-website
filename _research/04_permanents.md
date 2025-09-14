@@ -16,4 +16,8 @@ simplifying its proof.
 {% endfor %}
 
 <div><b>Talks:</b></div>
-  - MIT CS Theory Lunch 2020 [\[notes\]](/assets/pdfs/theorylunch_2020_Feb.pdf)
+
+{% assign talks = site.talks | where: "research-category", page.research-category | sort: "year" | reverse %}
+{% for talk in talks %}
+{% include talk_item_short.html %}
+{% endfor %}

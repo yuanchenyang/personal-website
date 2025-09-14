@@ -22,6 +22,8 @@ making a connection to Max-Cut.
 {% endfor %}
 
 <div><b>Talks:</b></div>
-  - LIDS Student Conference 2021 [\[slides\]](/assets/pdfs/prod_psd_forms_lidsconf.pdf)
-  - Fields Institute Workshop 2021 [\[slides\]](/assets/pdfs/prod_psd_forms_fields.pdf) [\[video\]](https://youtu.be/SStvrbXmV4E)
-  - ISMP 2024 [\[slides\]](/assets/pdfs/ismp_2024_talk.pdf)
+
+{% assign talks = site.talks | where: "research-category", page.research-category | sort: "year" | reverse %}
+{% for talk in talks %}
+{% include talk_item_short.html %}
+{% endfor %}

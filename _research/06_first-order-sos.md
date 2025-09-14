@@ -25,6 +25,8 @@ squares decomposition of a million-degree polynomial in less than 30 minutes.
 {% endfor %}
 
 <div><b>Talks:</b></div>
- - ICCOPT 2022 Invited Talk [\[slides\]](/assets/pdfs/iccopt_talk.pdf)
- - INFORMS 2021 Invited Talk [\[slides\]](/assets/pdfs/INFORMS_Presentation.pdf)
- - MIT LIDS & Stats Tea Talk 2021 [\[notes\]](/assets/pdfs/sos_sampling_talk.pdf)
+
+{% assign talks = site.talks | where: "research-category", page.research-category | sort: "year" | reverse %}
+{% for talk in talks %}
+{% include talk_item_short.html %}
+{% endfor %}
