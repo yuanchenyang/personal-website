@@ -1,0 +1,4 @@
+<div class="paper-item">
+  <div class="paper-title"><b>{{ paper.title }}</b></div>
+  <div class="paper-meta"><small>{{ paper.authors | replace: 'Chenyang Yuan', '<b>Chenyang Yuan</b>' }}</small> <i>{% if paper.published-url %}<a href="{{ paper.published-url }}" target="_blank">{{ paper.venue }}, {{ paper.year }}</a>{% else %}{{ paper.venue }}, {{ paper.year }}{% endif %}</i>{% if paper.preprint-url %} <a href="{{ paper.preprint-url }}" target="_blank">[{{ paper.preprint-type }}]</a>{% endif %}{% if paper.pdf-url %} <a href="{{ paper.pdf-url }}" target="_blank">[pdf]</a>{% endif %}{% if paper.poster-url %} <a href="{{ paper.poster-url }}" target="_blank">[poster]</a>{% endif %}{% if paper.code-url %} <a href="{{ paper.code-url }}" target="_blank">[code]</a>{% endif %}</div>
+</div>

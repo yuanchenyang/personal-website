@@ -14,9 +14,12 @@ Sum-of-Squares relaxations, as well as randomized rounding schemes (see picture
 on the right). We also analyze rounding schemes for different functions $$f$$,
 making a connection to Max-Cut.
 
-**Chenyang Yuan** and Pablo Parrilo. "Semidefinite Relaxations of Products of
-Nonnegative Forms on the Sphere" _Preprint_.
-[\[arxiv\]](https://arxiv.org/pdf/2102.13220)
+<div><b>Papers:</b></div>
+
+{% assign papers = site.papers | where: "research-category", page.research-category | sort: "year" | reverse %}
+{% for paper in papers %}
+{% include paper_item_short.html %}
+{% endfor %}
 
 <div><b>Talks:</b></div>
   - LIDS Student Conference 2021 [\[slides\]](/assets/pdfs/prod_psd_forms_lidsconf.pdf)

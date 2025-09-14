@@ -17,18 +17,11 @@ efficient diffusion sampler, as well as a framework for incorporating
 constraints (such as minimizing the drag coefficient of vehicle images) into the
 generation process.
 
-Frank Permenter\* and **Chenyang Yuan\***. "Interpreting and Improving Diffusion
-Models from an Optimization Perspective" [_ICML 2024_](https://proceedings.mlr.press/v235/permenter24a.html).
-[\[arxiv\]](https://arxiv.org/abs/2306.04848) [\[poster\]](/assets/images/icml-2024-poster.png) [\[code\]](https://github.com/ToyotaResearchInstitute/gradient-estimation-sampler)
-
-Nikos Arechiga\*, Frank Permenter\*, Binyang Song\* and **Chenyang Yuan\***,
-"Drag-guided diffusion models for vehicle image generation", NeurIPS 2023 Workshop on Diffusion Models.
-[\[arxiv\]](https://arxiv.org/abs/2306.09935) [\[poster\]](/assets/pdfs/drag_diffusion_poster.pdf)
-
-Binyang Song, **Chenyang Yuan**, Frank Permenter, Nikos Arechiga and Faez Ahmed,
-"Surrogate Modeling of Car Drag Coefficient with Depth and Normal Renderings",
-_IDETC 2023_.
-[\[arxiv\]](https://arxiv.org/abs/2306.06110)
+<div><b>Papers:</b></div>
+{% assign papers = site.papers | where: "research-category", page.research-category | sort: "year" | reverse %}
+{% for paper in papers %}
+{% include paper_item_short.html %}
+{% endfor %}
 
 <div><b>Talks:</b></div>
  - Interpreting and improving diffusion models from an optimization perspective [\[slides\]](/assets/pdfs/diffusion_presentation_06_14.pdf)
