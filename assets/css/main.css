@@ -308,3 +308,7 @@ figure {
 .year-papers {
   margin-bottom: 20px;
 }
+
+.spotlight {
+  font-weight: bold;
+}
