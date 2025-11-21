@@ -11,7 +11,7 @@ preprint-type: arxiv
 preprint-url: https://arxiv.org/abs/2509.09672
 website-url: https://locality.lukoianov.com/
 published-url: https://neurips.cc/virtual/2025/poster/115663
-pdf-url:
-poster-url:
+pdf-url: https://openreview.net/pdf?id=skunuOdavO
+poster-url: /assets/images/neurips-2025-poster.png
 code-url: https://github.com/ottogin/locality-in-diffusion-models
 ---
