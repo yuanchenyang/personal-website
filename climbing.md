@@ -17,9 +17,33 @@ project
 ticks](https://www.mountainproject.com/user/201277033/chenyang-yuan){:target="_blank"}.
 
 <div class="image-right">
+  <img src="/assets/images/climbing10.jpg" width="260"
+  alt="Looking down into the valley from the East Buttress of El Cap">
+  <img src="/assets/images/climbing9.jpg" width="260"
+  alt="Hand crack near the top of Red Dihedral route">
+</div>
+
+## 2025 Stats
+- Days climbed
+  - Indoors: 95
+  - Outdoors: 50 (307 pitches, 232 Trad, 75 Sport)
+  - Total: 145 (40%)
+- Sport
+  - Redpoint max: 12b
+  - Onsight max: 11c
+- Trad
+  - Redpoint max: 11b (12a mixed)
+  - Onsight max: 10d (11b mixed)
+  - Gunks redpoints: [Fat City Direct (10d)](https://www.mountainproject.com/route/105798943/fat-city-direct), [Coexistence (10d)](https://www.mountainproject.com/route/105799053/coexistence)
+- Featured climbs
+  - [East Buttress of El Cap (Yosemite)](https://www.mountainproject.com/route/105833467/east-buttress)
+  - [Red Dihedral of Incredible Hulk](https://www.mountainproject.com/route/105852183/red-dihedral-aka-yggdrasil)
+
+<div class="image-right">
+  <img src="/assets/images/climbing8.jpg" width="260"
+  alt="After the chimneys of Epinephrine">
   <img src="/assets/images/climbing7.jpg" width="260"
   alt="Looking at El Cap from east buttress of Middle Cathedral">
-  <img src="/assets/images/climbing8.jpg" width="260" alt="After the chimneys of Epinephrine">
 </div>
 
 ## 2024 Stats
@@ -43,8 +67,10 @@ ticks](https://www.mountainproject.com/user/201277033/chenyang-yuan){:target="_b
   - <V4: 32
 
 <div class="image-right">
-  <img src="/assets/images/climbing5.jpg" width="310" alt="Halfway up Northeast face of Pingora">
-  <img src="/assets/images/climbing6.jpg" width="310" alt="Sport climbing near Jackson, Wyoming">
+  <img src="/assets/images/climbing6.jpg" width="310"
+  alt="Sport climbing near Jackson, Wyoming">
+  <img src="/assets/images/climbing5.jpg" width="310"
+  alt="Halfway up Northeast face of Pingora">
 </div>
 
 ## 2023 Stats
@@ -70,10 +96,10 @@ ticks](https://www.mountainproject.com/user/201277033/chenyang-yuan){:target="_b
   - <V3: 17
 
 <div class="image-right">
-  <img src="/assets/images/climbing3.jpg" width="310"
-  alt="Last pitch on Northeast ridge of the Pinnacle">
   <img src="/assets/images/climbing4.jpg" width="310"
   alt="View while climbing east ridge of Disappointment Peak">
+  <img src="/assets/images/climbing3.jpg" width="310"
+  alt="Last pitch on Northeast ridge of the Pinnacle">
 </div>
 
 ## 2022 Stats
@@ -102,10 +128,10 @@ ticks](https://www.mountainproject.com/user/201277033/chenyang-yuan){:target="_b
   - <V3: 17
 
 <div class="image-right">
-  <img src="/assets/images/climbing1.jpg" width="310"
-  alt="Sport climbing at Smith Rock, photo by Preetum Nakkiran">
   <img src="/assets/images/climbing2.jpg" width="310"
   alt="Sport climbing at Joshua Tree, photo by Preetum Nakkiran">
+  <img src="/assets/images/climbing1.jpg" width="310"
+  alt="Sport climbing at Smith Rock, photo by Preetum Nakkiran">
 </div>
 
 ## 2021 Stats (5/1 to 12/31)
