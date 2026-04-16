@@ -3,6 +3,7 @@ layout: post
 title:  "Book Review: Naive Set Theory by Paul Halmos (Part 1)"
 date:   2014-07-29 00:00:00
 categories: math
+hidden: true
 ---
 
 Last weekend I just finished reading [Naive Set Theory][amazon-link] by Paul

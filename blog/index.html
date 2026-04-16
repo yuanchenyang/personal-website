@@ -8,7 +8,7 @@ projects: 'projects.html'
 
 <main class="content" role="main">
 
-    {% for post in paginator.posts %}
+    {% for post in paginator.posts %}{% unless post.hidden %}
 
     <article class="post">
         <header class="post-header">
@@ -23,7 +23,7 @@ projects: 'projects.html'
         <a href="{{ post.url }}"> Read more </a>
     </article>
 
-    {% endfor %}
+    {% endunless %}{% endfor %}
 
     <nav class="pagination" role="pagination">
 

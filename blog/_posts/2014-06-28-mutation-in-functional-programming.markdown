@@ -3,6 +3,7 @@ layout: post
 title:  "Mutation in Functional Programming"
 date:   2014-06-28 19:00:00
 categories: functional-programming
+hidden: true
 ---
 
 A *pure function* is a function that always evaluates to the same results given

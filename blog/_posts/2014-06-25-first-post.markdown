@@ -3,6 +3,7 @@ layout: post
 title:  "First Post!"
 date:   2014-06-25 00:00:00
 categories: jekyll first
+hidden: true
 ---
 
 I've finally found the time to start a blog! I think the last time I've tried to

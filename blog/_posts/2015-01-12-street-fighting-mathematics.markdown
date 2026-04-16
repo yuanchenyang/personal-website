@@ -3,6 +3,7 @@ layout: post
 title:  "Street-Fighting Mathematics"
 date:   2015-01-12 00:00:00
 categories: math
+hidden: true
 ---
 
 During the winter break, I was reading this book called

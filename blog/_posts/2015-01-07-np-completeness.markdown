@@ -3,6 +3,7 @@ layout: post
 title:  "NP Completeness"
 date:   2015-01-07 00:00:00
 categories: math
+hidden: true
 ---
 
 Let's look at an algorithmic problem. We have a graph, and we want to color all
