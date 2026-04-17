@@ -61,28 +61,18 @@ img.profile {
 
 .top-bar {
     background-color: white;
-}
-
-.top-bar:after {
-    clear: both;
-}
-.top-bar:before,
-.top-bar:after {
-    display: table;
-    line-height: 0;
-    content: "";
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .top-bar-item {
-    padding-top:    16px ;
-    padding-bottom: 10px ;
-    padding-left:   20px ;
-    padding-right:  20px ;
+    padding: 12px 22px;
     font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
     color: #0072C1;
-    float: left;
     font-size: 18px;
     text-decoration: none;
+    white-space: nowrap;
 }
 
 .top-bar-item:hover {
@@ -92,14 +82,11 @@ img.profile {
 .top-bar-title {
     font-size: 24px;
     font-weight: 800;
-    padding-top: 15px;
-    padding-bottom: 10px;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding: 12px 30px 12px 20px;
     font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
     color: #0072C1;
-    float: left;
     text-decoration: none;
+    white-space: nowrap;
 }
 
 .image-left {

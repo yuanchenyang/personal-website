@@ -53,7 +53,7 @@
     font-variant: normal;
     text-transform: none;
     line-height: 1;
-    -webkit-font-smoothing: antialiased;
+    font-smooth: antialiased;
     text-decoration: none;
 }
 
@@ -198,7 +198,6 @@ hr {
 }
 
 blockquote {
-    -moz-box-sizing: border-box;
     box-sizing: border-box;
     margin: 1.6em 0 1.6em -2.2em;
     padding: 0 0 0 1.6em;
@@ -240,7 +239,6 @@ code, tt {
 }
 
 pre {
-    -moz-box-sizing: border-box;
     box-sizing: border-box;
     margin: 1.6em 0;
     border: 1px solid #E3EDF3;
@@ -256,7 +254,6 @@ pre {
 
 pre code, tt {
     font-size: inherit;
-    white-space: -moz-pre-wrap;
     white-space: pre-wrap;
     background: transparent;
     border: none;
@@ -280,7 +277,6 @@ kbd {
 }
 
 table {
-    -moz-box-sizing: border-box;
     box-sizing: border-box;
     margin: 1.6em 0;
     width:100%;
@@ -435,8 +431,6 @@ margin on the iframe, cause it breaks stuff. */
     left: 50%;
     margin-left: -5px;
     background: #fff;
-    -webkit-border-radius: 100%;
-    -moz-border-radius: 100%;
     border-radius: 100%;
     box-shadow: #fff 0 0 0 5px;
 }
@@ -793,8 +787,6 @@ margin on the iframe, cause it breaks stuff. */
     }
 
     .site-head {
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
         box-sizing: border-box;
         height: auto;
         min-height: 240px;
