@@ -13,6 +13,8 @@ models. Codex tends to stop at reasonable-looking milestones even when the next
 step is obvious, which can be a pain when I want it to run unattended. A `Stop`
 hook that injects a continuation prompt fixes it.
 
+<!--more-->
+
 You register the hook once in `~/.codex` and opt in per run, so there's nothing
 to add to individual projects.  The setup is three files, and the hook stays off
 unless you set `CODEX_KEEPALIVE=1`.
