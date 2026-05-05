@@ -11,8 +11,8 @@ ran an automated theorem proving experiment on a nonconvex optimization problem
 from sum-of-squares optimization, an extension of [a chapter of my PhD
 work](https://arxiv.org/abs/2205.11466).
 
-The goal was to give an agent the formal statement of a theorem in Lean, a
-computational search toolkit and a verification harness, then let it
+The goal was to give an agent a formal theorem statement in Lean, a
+computational search toolkit, and a verification harness, then let it
 autonomously work through the whole cycle that I previously went through: search
 for counterexamples, infer structure, write a mathematical blueprint, formalize
 the proof, and keep going until Lean accepted the final theorem.
@@ -75,7 +75,7 @@ factorization.
 
 It is a classically known fact that all nonnegative binary forms (univariate
 polynomials) can be written as a sum of two squares. In a joint paper with
-Benoit Legat and Pablo Parrilo published in the [SIAM Journal of
+Benoît Legat and Pablo Parrilo published in the [SIAM Journal of
 Optimization](https://doi.org/10.1137/22M1516208), we showed that for all
 nonnegative binary forms $$p$$, the nonconvex rank-2 factorization of $$
 f_p(\mathbf{u}) = \left\| u_1^2 + u_2^2 - p\right\|^2 $$ has no spurious local
@@ -102,7 +102,7 @@ Zhang). Hence the rank-4 result proved in the above theorem is sharp.
 I think this theorem is a useful benchmark for automated proof development
 because it has the following properties:
 
-1. Its involves elementary objects (polynomials, vector spaces, inner products,
+1. It involves elementary objects (polynomials, vector spaces, inner products,
    first- and second-order optimality conditions) that are easy to state using
    Lean and mathlib
 2. The theorem statement can be written concisely into Lean, and verifying the
@@ -112,11 +112,11 @@ because it has the following properties:
 4. It is easy to make incremental progress on the theorem using computational
    tools
 
-It's worth elaborating on the last point. This theorem is statement that has to
+It's worth elaborating on the last point. This theorem is a statement that has to
 be proved for all critical points $$\mathbf{u} \in \mathbb{R}[x_1,x_2,x_3]_2^4$$
 of all $$p \in \Sigma[x_1,x_2,x_3]_4$$. If we fix a particular $$\mathbf{u}$$,
-it turns out that the search over all $$p$$ that $$\mathbf{u}$$ is a spurious
-critical point of, can be formulated as a SDP (for more details see [our
+it turns out that the search over all $$p$$ for which $$\mathbf{u}$$ is a
+spurious critical point can be formulated as an SDP (for more details see [our
 paper](https://arxiv.org/abs/2205.11466) or [these
 slides](/assets/pdfs/iccopt_2025_talk.pdf)). If $$\mathbf{u}$$ does not admit
 such counterexamples, the dual certificate of the SDP gives a proof for this
@@ -141,7 +141,7 @@ agents:
 4. Run a verification harness that builds the Lean files and checks the theorem
 5. Repeat until the theorem is proved
 
-The code and harness I used are in [this github
+The code and harness I used are in [this GitHub
 repository](https://github.com/yuanchenyang/nonconvex_sos_landscape), along with
 the completed proof. The commit history made by the agent for the successful run
 can be found [in this
@@ -164,7 +164,7 @@ The agent was required to record numerical experiments under
 and translate the resulting proof ideas into
 [`writeup/ternary_quartic/blueprint.tex`](https://github.com/yuanchenyang/nonconvex_sos_landscape/blob/main/writeup/ternary_quartic/blueprint.tex).
 
-The agent first writes each proof in ordinary mathematical language before
+The agent first wrote each proof in ordinary mathematical language before
 formalizing. The Lean files were added under the folder
 [`TernaryQuarticProof/`](https://github.com/yuanchenyang/nonconvex_sos_landscape/blob/main/TernaryQuarticProof/),
 with the immutable statement in
@@ -198,7 +198,7 @@ dependencies available to the agent.
 The launcher for the successful track is
 [`scripts/run_ternary_quartic.sh`](https://github.com/yuanchenyang/nonconvex_sos_landscape/blob/main/scripts/run_ternary_quartic.sh). It starts
 Codex (for this proof I used GPT 5.4 xhigh) with a [persistent keepalive
-prompt](/blog/agents/2026/04/15/codex-continuation.html):
+prompt](/blog/codex-continuation.html):
 
 ```text
 Keep the goal fixed: prove TernaryQuartic.ternaryQuartic_rankFour_no_spurious_socp for TernaryQuarticRankFourNoSpuriousSOCP, using Julia SDP dual certificates only to generate and test proof ideas, then write the full argument in writeup/ternary_quartic/blueprint.tex before formalizing it in Lean; add only proof-serving lemmas, keep the final theorem declaration in TernaryQuarticProof.lean, do not weaken or restate the target, do not touch TernaryQuartic.lean, treat the verification harnesses as stable unless explicitly asked, do not build or depend on low_rank_univariate_sos/, log all experiments and strategy changes in writeup/ternary_quartic/exploration_log.tex, record numerical claims in julia/ternary_quartic_explorations/ and reference them in the .tex files, verify regularly with ./scripts/verify_ternary_quartic.sh, commit each coherent round of progress, and do not stop until the Lean proof, blueprint, verification, and final commit are all complete.'
@@ -249,7 +249,7 @@ max-width=650
 %}
 
 Those failures suggested that the agent needed a tighter loop. Exploration was
-allowed, but its progress has to be summarized in a written blueprint. Lean
+allowed, but its progress had to be summarized in a written blueprint. Lean
 formalization was allowed, but only after the proof idea was clear enough to
 survive translation. It also seemed important to have the agent keep a log of
 which subgoals were proved, abandoned, or still blocking the argument.
@@ -261,8 +261,10 @@ the progress it made over 3 days, in terms of commits over time.
 
 ### Outline of the proof
 
-I used a LLM to summarize the Lean proof into a [10-page
-PDF](https://github.com/yuanchenyang/nonconvex_sos_landscape/blob/main/writeup/ternary_quartic/blueprint.pdf). Below is a brief overview of the proof structure.
+After the proof was complete, I used an LLM to summarize the Lean proof into a
+[10-page
+PDF](https://github.com/yuanchenyang/nonconvex_sos_landscape/blob/main/writeup/ternary_quartic/blueprint.pdf). Below
+is a brief overview of the proof structure.
 
 For a rank-4 factor $$\mathbf{u}=[u_1,\ldots,u_4]$$, define the linear map
 $$A_{\mathbf{u}}(\mathbf{v}):=\sum_{i=1}^4 u_i v_i$$ and the residual
@@ -283,13 +285,13 @@ Thus, for every kernel direction $$\mathbf{w}\in\ker A_{\mathbf{u}}$$,
 $$\left\langle A_{\mathbf{w}}(\mathbf{w}),r(\mathbf{u},p)\right\rangle\ge 0.$$
 If every sum-of-squares summand $$q^2$$ of $$p$$ can be written, modulo the
 image of $$A_{\mathbf{u}}$$, as a sum of squares of kernel directions, the
-first- and second-order conditions forces $$r(\mathbf{u},p)=0$$. This is a
+first- and second-order conditions force $$r(\mathbf{u},p)=0$$. This is a
 general strategy, also shared with the proof of the binary form/univariate
 polynomial case.
 
 The hard part for ternary quartics is proving that this decomposition exists for
 every possible choice of $$\mathbf{u}$$. For simplicity we work with
-dehomogenized polynomials intead of forms.  Define
+dehomogenized polynomials instead of forms. Define
 $$\rho_{\mathbf{u}}(c):=\sum_{i=1}^4 c_i u_i$$ for $$c\in\mathbb{R}^4$$, and let
 
 $$E(\mathbf{u}):=\{c:\rho_{\mathbf{u}}(c)\text{ has degree at most }1\}.$$
@@ -326,8 +328,32 @@ missing coefficients. Summing over an SOS representation $$p=\sum_k q_k^2$$
 gives the certificate above. Therefore every second-order critical point has
 zero residual and is globally optimal.
 
-### Discussion
+### Discussion and limitations
 
+The most important caveat is that this was a one-off successful run, so there's
+no hard experimental evidence about which of the many design decisions actually
+made a difference. In addition, I intervened about once a day to ask the model
+to summarize the proof progress, it's unclear if that made a difference. Thus
+more empirical studies are probably needed before any strong claims can be made.
+
+The workflow used a relatively weaker model (GPT 5.4 xhigh in Codex) because I
+wanted to take advantage of the Codex harness. GPT Pro is likely better at
+coming up with high-level proof strategies. Previously I've posed this problem
+to each new version of GPT Pro up to 5.3, though the proofs returned tended to
+have subtle mistakes and holes that became increasingly harder for me to
+manually verify, which is why I turned to formal verification. After posing the
+same problem to GPT 5.5 Pro, it came up with a proof that shared some
+similarities with the one found by this workflow, though it cited a result from
+algebraic geometry which could be hard to formalize.
+
+Having a proof that a theorem is true is different from getting a better
+understanding of why it should be true. The nature of this problem and/or the
+workflow used to solve it tends to produce complicated proofs involving a lot of
+case analysis, which makes manual verification and understanding difficult. An
+advantage of having a Lean proof though is that one can query it with LLMs,
+zooming into details, asking them to translate arguments into more familiar
+notation/language or generate illustrative examples, all while knowing that the
+underlying proof is correct.
 
 ### Conclusion
 
@@ -343,3 +369,14 @@ workflow: use optimization software to generate proof certificates from
 examples, use LLMs to generalize these into mathematical arguments, and use Lean
 to check that the proofs are correct and the final theorem is exactly what was
 claimed.
+
+### Citation
+
+```
+@misc{yuan2026automatedproof,
+  author       = {Chenyang Yuan},
+  title        = {Automated Proof of a Benign Nonconvex Landscape Theorem},
+  year         = {2026},
+  url          = {https://www.chenyang.co/blog/automatic-theorem-proving.html}
+}
+```
