@@ -7,15 +7,16 @@ meta_title: Automated Proof of a Benign Nonconvex Landscape Theorem
 meta_description: How I used an AI coding agent to discover a proof a new mathematical result by combining computational experiments, proof planning, and Lean formal verification
 meta_type: article
 meta_image: https://www.chenyang.co/assets/images/theorem_proving_screenshot.png
+twitter_card: summary_large_image
 ---
 
 <a href="https://github.com/yuanchenyang/nonconvex_sos_landscape">
 <img src="https://img.shields.io/badge/View%20on-GitHub-black?logo=github" alt="View on GitHub" style="margin-left: 0; margin-right: auto;" /></a>
 
 At the start of 2026, I noticed that LLM agents are becoming more capable at
-solving math problems, and began to use them for theorem proving. Early
-April, I ran an automated theorem proving experiment on a nonconvex optimization
-problem from sum-of-squares optimization, an extension of [a chapter of my PhD
+solving math problems, and began to use them for theorem proving. Early April, I
+ran an automated theorem proving experiment on a nonconvex optimization problem
+from sum-of-squares optimization, an extension of [of my PhD
 work](https://arxiv.org/abs/2205.11466).
 
 The goal was to give an agent a formal theorem statement in Lean, a
