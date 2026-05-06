@@ -3,19 +3,27 @@ layout: post
 title: "Automated Proof of a Benign Nonconvex Landscape Theorem"
 date: 2026-05-01 00:00:00
 categories: agents math
+meta_title: Automated Proof of a Benign Nonconvex Landscape Theorem
+meta_description: How I used an AI coding agent to discover a proof a new mathematical result by combining computational experiments, proof planning, and Lean formal verification
+meta_type: article
+meta_image: https://www.chenyang.co/assets/images/theorem_proving_screenshot.png
 ---
 
-In early 2026, I noticed that LLM agents are becoming more capable at solving
-math problems, and started to use them more for theorem proving. Early April, I
-ran an automated theorem proving experiment on a nonconvex optimization problem
-from sum-of-squares optimization, an extension of [a chapter of my PhD
+<a href="https://github.com/yuanchenyang/nonconvex_sos_landscape">
+<img src="https://img.shields.io/badge/View%20on-GitHub-black?logo=github" alt="View on GitHub" style="margin-left: 0; margin-right: auto;" /></a>
+
+At the start of 2026, I noticed that LLM agents are becoming more capable at
+solving math problems, and began to use them for theorem proving. Early
+April, I ran an automated theorem proving experiment on a nonconvex optimization
+problem from sum-of-squares optimization, an extension of [a chapter of my PhD
 work](https://arxiv.org/abs/2205.11466).
 
 The goal was to give an agent a formal theorem statement in Lean, a
 computational search toolkit, and a verification harness, then let it
-autonomously work through the whole cycle that I previously went through: search
-for counterexamples, infer structure, write a mathematical blueprint, formalize
-the proof, and keep going until Lean accepted the final theorem.
+autonomously work through the whole cycle that my coauthors and I previously
+went through: search for counterexamples, infer structure, write a mathematical
+blueprint, formalize the proof, and keep going until Lean accepted the final
+theorem.
 
 Over roughly three days of continuous work, the agent produced about 58k lines
 of Lean, 2k lines of Julia, 7.5k lines of LaTeX, and more than 200 commits
@@ -61,7 +69,8 @@ $$
 \nabla_{\mathbf{u}}^2 f_p(\mathbf{u})(\mathbf{v},\mathbf{v}) \ge 0
 $$
 
-_for every perturbation $$\mathbf{v}$$, then_
+_for every perturbation $$\mathbf{v} \in
+\mathbb{R}[x_1,x_2,x_3]_2^4$$, then_
 
 $$
 f_p(\mathbf{u}) = 0.
@@ -71,11 +80,36 @@ In other words, every second-order critical point is also globally optimal and
 there are no spurious local minima for the rank-4 ternary quartic Burer-Monteiro
 factorization.
 
+<!--
+**Theorem** _Let $$\mathbb{R}[x_{1:3}]_d$$ be the space of ternary forms of degree $$d$$, and
+$$\mathbf{u} = [u_1,\ldots,u_4] \in \mathbb{R}[x_{1:3}]_2^4.$$ For a quartic
+sum-of-squares form $$p \in \Sigma[x_{1:3}]_4$$ consider the nonconvex objective_
+
+$$
+f_p(\mathbf{u}) =
+\left\|\sum_{i=1}^4 u_i^2 - p\right\|^2.
+$$
+
+_For all $$p \in \Sigma[x_{1:3}]_4$$, if $$\mathbf{u} \in
+\mathbb{R}[x_{1:3}]_2^4$$ is a second-order critical point of $$f_p$$
+satisfying the first- and second-order necessary conditions_
+
+$$
+\nabla_{\mathbf{u}} f_p(\mathbf{u})(\mathbf{v}) = 0
+\quad \text{and} \quad
+\nabla_{\mathbf{u}}^2 f_p(\mathbf{u})(\mathbf{v},\mathbf{v}) \ge 0
+$$
+
+_for every perturbation $$\mathbf{v} \in \mathbb{R}[x_{1:3}]_2^4$$, then
+$$f_p(\mathbf{u}) = 0.$$_
+-->
+
+
 ### Why is this theorem interesting?
 
 It is a classically known fact that all nonnegative binary forms (univariate
 polynomials) can be written as a sum of two squares. In a joint paper with
-Benoît Legat and Pablo Parrilo published in the [SIAM Journal of
+Benoît Legat and Pablo Parrilo published in the [SIAM Journal on
 Optimization](https://doi.org/10.1137/22M1516208), we showed that for all
 nonnegative binary forms $$p$$, the nonconvex rank-2 factorization of $$
 f_p(\mathbf{u}) = \left\| u_1^2 + u_2^2 - p\right\|^2 $$ has no spurious local
@@ -91,8 +125,8 @@ showed](https://en.wikipedia.org/wiki/Ternary_quartic) that all nonnegative
 ternary quartics can be written as a sum of 3 squares.
 
 Surprisingly, for a rank-$$3$$ factorization, $$\mathbf{u} = [x_1^2, x_2^2, x_1
-x_2]$$ is a second-order critical point of $$f_p$$ with $$p = 2x_3^4 + x_1^4 +
-x_2^4 + x_1^2 x_2^2$$ (this counterexample first appeared in [a
+x_2]$$ is a spurious second-order critical point of $$f_p$$ with $$p = 2x_3^4 +
+x_1^4 + x_2^4 + x_1^2 x_2^2$$ (this counterexample first appeared in [a
 paper](https://arxiv.org/pdf/2411.02208) by Blekherman, Sinn, Velasco and
 Zhang). Hence the rank-4 result proved in the above theorem is sharp.
 
@@ -126,7 +160,7 @@ $$\mathbf{u}$$.
 It's important to emphasize that these SDP certificates are numerical artifacts,
 so they are not directly proofs. But patterns from these certificates can be
 generalized into proofs for more general classes of $$\mathbf{u}$$. In fact, we
-went through a similar process (manually) to prove the result for binary forms:
+went through a similar process (manually) to prove the result for binary forms.
 
 ### The agentic loop
 
@@ -154,8 +188,8 @@ The agent was instructed to begin with numerical explorations. The Julia code in
 formulates SDP searches using [JuMP](https://github.com/jump-dev/JuMP.jl) and
 [SumOfSquares.jl](https://github.com/jump-dev/SumOfSquares.jl) to call SDP
 solvers. The purpose of these searches was to look for spurious second-order
-critical points and when searches failed, to inspect the dual certificates
-explaining why.
+critical points and when searches failed, to inspect the numerical dual
+certificates explaining why.
 
 Those certificates suggested algebraic patterns such as ideal membership,
 divisibility, dimension counts, and structure in the span of quadratic forms.
@@ -196,9 +230,9 @@ reproducible Ubuntu environment with Lean, Julia, Lake caches, and solver
 dependencies available to the agent.
 
 The launcher for the successful track is
-[`scripts/run_ternary_quartic.sh`](https://github.com/yuanchenyang/nonconvex_sos_landscape/blob/main/scripts/run_ternary_quartic.sh). It starts
-Codex (for this proof I used GPT 5.4 xhigh) with a [persistent keepalive
-prompt](/blog/codex-continuation.html):
+[`scripts/run_ternary_quartic.sh`](https://github.com/yuanchenyang/nonconvex_sos_landscape/blob/main/scripts/run_ternary_quartic.sh). It
+starts Codex (for this proof I used GPT 5.4 xhigh, the best model available at
+the time) with a [persistent keepalive prompt](/blog/codex-continuation.html):
 
 ```text
 Keep the goal fixed: prove TernaryQuartic.ternaryQuartic_rankFour_no_spurious_socp for TernaryQuarticRankFourNoSpuriousSOCP, using Julia SDP dual certificates only to generate and test proof ideas, then write the full argument in writeup/ternary_quartic/blueprint.tex before formalizing it in Lean; add only proof-serving lemmas, keep the final theorem declaration in TernaryQuarticProof.lean, do not weaken or restate the target, do not touch TernaryQuartic.lean, treat the verification harnesses as stable unless explicitly asked, do not build or depend on low_rank_univariate_sos/, log all experiments and strategy changes in writeup/ternary_quartic/exploration_log.tex, record numerical claims in julia/ternary_quartic_explorations/ and reference them in the .tex files, verify regularly with ./scripts/verify_ternary_quartic.sh, commit each coherent round of progress, and do not stop until the Lean proof, blueprint, verification, and final commit are all complete.'
@@ -263,8 +297,10 @@ the progress it made over 3 days, in terms of commits over time.
 
 After the proof was complete, I used an LLM to summarize the Lean proof into a
 [10-page
-PDF](https://github.com/yuanchenyang/nonconvex_sos_landscape/blob/main/writeup/ternary_quartic/blueprint.pdf). Below
-is a brief overview of the proof structure.
+blueprint](https://github.com/yuanchenyang/nonconvex_sos_landscape/blob/main/writeup/ternary_quartic/blueprint.pdf)
+(Disclaimer: Although the Lean proof is correct, I have not closely checked if
+this blueprint is an accurate reflection of that proof). Below is a brief
+overview of the proof structure.
 
 For a rank-4 factor $$\mathbf{u}=[u_1,\ldots,u_4]$$, define the linear map
 $$A_{\mathbf{u}}(\mathbf{v}):=\sum_{i=1}^4 u_i v_i$$ and the residual
@@ -324,22 +360,23 @@ $$\operatorname{im} A_{\mathbf{u}}$$. In the remaining cases, the quotient by
 $$\operatorname{im} A_{\mathbf{u}}$$ has only one or two missing classes, such
 as the constant coefficient or one linear coefficient. The proof writes down
 explicit kernel directions $$\mathbf{w}^{(j)}$$ whose squares match those
-missing coefficients. Summing over an SOS representation $$p=\sum_k q_k^2$$
-gives the certificate above. Therefore every second-order critical point has
-zero residual and is globally optimal.
+missing coefficients. Summing over a sum-of-squares representation $$p=\sum_k
+q_k^2$$ gives the certificate above. Therefore every second-order critical point
+has zero residual and is globally optimal.
 
 ### Discussion and limitations
 
 The most important caveat is that this was a one-off successful run, so there's
 no hard experimental evidence about which of the many design decisions actually
-made a difference. In addition, I intervened about once a day to ask the model
-to summarize the proof progress, it's unclear if that made a difference. Thus
-more empirical studies are probably needed before any strong claims can be made.
+made a difference. In addition, I intervened about once or twice a day to ask
+the model to summarize the proof progress, it's unclear if that made a
+difference. Thus more empirical studies are needed before any strong claims on
+the workflow can be made.
 
 The workflow used a relatively weaker model (GPT 5.4 xhigh in Codex) because I
 wanted to take advantage of the Codex harness. GPT Pro is likely better at
 coming up with high-level proof strategies. Previously I've posed this problem
-to each new version of GPT Pro up to 5.3, though the proofs returned tended to
+to each new version of GPT Pro up to 5.2, though the proofs returned tended to
 have subtle mistakes and holes that became increasingly harder for me to
 manually verify, which is why I turned to formal verification. After posing the
 same problem to GPT 5.5 Pro, it came up with a proof that shared some
