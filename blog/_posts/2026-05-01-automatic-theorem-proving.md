@@ -182,10 +182,10 @@ the completed proof. The commit history made by the agent for the successful run
 can be found [in this
 branch](https://github.com/yuanchenyang/nonconvex_sos_landscape/tree/autoproof-tq-r4).
 The successful run followed the loop encoded in
-[`prompts/ternary_quartic.md`](https://github.com/yuanchenyang/nonconvex_sos_landscape/blob/main/prompts/ternary_quartic.md).
+[`TernaryQuartic/prompt.md`](https://github.com/yuanchenyang/nonconvex_sos_landscape/blob/main/TernaryQuartic/prompt.md).
 
 The agent was instructed to begin with numerical explorations. The Julia code in
-[`julia/`](https://github.com/yuanchenyang/nonconvex_sos_landscape/blob/main/julia/)
+[`julia/`](https://github.com/yuanchenyang/nonconvex_sos_landscape/tree/main/julia/)
 formulates SDP searches using [JuMP](https://github.com/jump-dev/JuMP.jl) and
 [SumOfSquares.jl](https://github.com/jump-dev/SumOfSquares.jl) to call SDP
 solvers. The purpose of these searches was to look for spurious second-order
@@ -195,21 +195,21 @@ certificates explaining why.
 Those certificates suggested algebraic patterns such as ideal membership,
 divisibility, dimension counts, and structure in the span of quadratic forms.
 The agent was required to record numerical experiments under
-[`julia/ternary_quartic_explorations/`](https://github.com/yuanchenyang/nonconvex_sos_landscape/blob/main/julia/ternary_quartic_explorations/)
+[`julia/ternary_quartic_explorations/`](https://github.com/yuanchenyang/nonconvex_sos_landscape/tree/main/julia/ternary_quartic_explorations/)
 and translate the resulting proof ideas into
 [`writeup/ternary_quartic/blueprint.tex`](https://github.com/yuanchenyang/nonconvex_sos_landscape/blob/main/writeup/ternary_quartic/blueprint.tex).
 
 The agent first wrote each proof in ordinary mathematical language before
 formalizing. The Lean files were added under the folder
-[`TernaryQuarticProof/`](https://github.com/yuanchenyang/nonconvex_sos_landscape/blob/main/TernaryQuarticProof/),
+[`TernaryQuartic/TernaryQuarticProof/`](https://github.com/yuanchenyang/nonconvex_sos_landscape/tree/main/TernaryQuartic/TernaryQuarticProof/),
 with the immutable statement in
-[`TernaryQuartic.lean`](https://github.com/yuanchenyang/nonconvex_sos_landscape/blob/main/TernaryQuartic.lean)
+[`TernaryQuartic/TernaryQuartic.lean`](https://github.com/yuanchenyang/nonconvex_sos_landscape/blob/main/TernaryQuartic/TernaryQuartic.lean)
 left untouched.
 
 The verification step involves running a script:
 
 ```bash
-./scripts/verify_ternary_quartic.sh
+./TernaryQuartic/verify.sh
 ```
 
 That script builds the Lean targets, typechecks the root proof file, confirms
@@ -231,12 +231,12 @@ reproducible Ubuntu environment with Lean, Julia, Lake caches, and solver
 dependencies available to the agent.
 
 The launcher for the successful track is
-[`scripts/run_ternary_quartic.sh`](https://github.com/yuanchenyang/nonconvex_sos_landscape/blob/main/scripts/run_ternary_quartic.sh). It
+[`TernaryQuartic/run.sh`](https://github.com/yuanchenyang/nonconvex_sos_landscape/blob/main/TernaryQuartic/run.sh). It
 starts Codex (for this proof I used GPT 5.4 xhigh, the best model available at
 the time) with a [persistent keepalive prompt](/blog/codex-continuation.html):
 
 ```text
-Keep the goal fixed: prove TernaryQuartic.ternaryQuartic_rankFour_no_spurious_socp for TernaryQuarticRankFourNoSpuriousSOCP, using Julia SDP dual certificates only to generate and test proof ideas, then write the full argument in writeup/ternary_quartic/blueprint.tex before formalizing it in Lean; add only proof-serving lemmas, keep the final theorem declaration in TernaryQuarticProof.lean, do not weaken or restate the target, do not touch TernaryQuartic.lean, treat the verification harnesses as stable unless explicitly asked, do not build or depend on low_rank_univariate_sos/, log all experiments and strategy changes in writeup/ternary_quartic/exploration_log.tex, record numerical claims in julia/ternary_quartic_explorations/ and reference them in the .tex files, verify regularly with ./scripts/verify_ternary_quartic.sh, commit each coherent round of progress, and do not stop until the Lean proof, blueprint, verification, and final commit are all complete.'
+Keep the goal fixed: prove TernaryQuartic.ternaryQuartic_rankFour_no_spurious_socp for TernaryQuarticRankFourNoSpuriousSOCP, using Julia SDP dual certificates only to generate and test proof ideas, then write the full argument in writeup/ternary_quartic/blueprint.tex before formalizing it in Lean; add only proof-serving lemmas, keep the final theorem declaration in TernaryQuartic/TernaryQuarticProof.lean, do not weaken or restate the target, do not touch TernaryQuartic/TernaryQuartic.lean, treat the verification harnesses as stable unless explicitly asked, do not build or depend on low_rank_univariate_sos/, log all experiments and strategy changes in writeup/ternary_quartic/exploration_log.tex, record numerical claims in julia/ternary_quartic_explorations/ and reference them in the .tex files, verify regularly with ./TernaryQuartic/verify.sh, commit each coherent round of progress, and do not stop until the Lean proof, blueprint, verification, and final commit are all complete.'
 ```
 
 The important point is continuity. A proof attempt like this does not fit into
@@ -258,7 +258,7 @@ contains the final Lean proof and the verification script. To check the
 ternary-quartic result, run:
 
 ```bash
-./scripts/verify_ternary_quartic.sh
+./TernaryQuartic/verify.sh
 ```
 
 The Julia setup and solver workflow are documented in
