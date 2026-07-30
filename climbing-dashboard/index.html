@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mountain Project Ticklist Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Mountain Project Ticklist Dashboard</h1>
+            <p>Upload your Mountain Project ticklist CSV to analyze your climbing data</p>
+        </header>
+
+        <div class="upload-section">
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-content">
+                    <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="7,10 12,15 17,10"></polyline>
+                        <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                    <h3>Drop your CSV file here</h3>
+                    <p>or <span class="upload-link">click to browse</span></p>
+                    <input type="file" id="fileInput" accept=".csv" style="display: none;">
+                </div>
+            </div>
+            <p class="upload-hint">
+                Get your <code>ticks.csv</code> from your Mountain Project profile &rarr; Ticks &rarr; Export CSV
+            </p>
+            <!-- data-file is the bundled export served next to this page, and
+                 data-label names whose ticks those are once loaded. Remove this
+                 paragraph on a deployment that ships no sample data. -->
+            <p class="upload-alt">
+                or <a class="bundled-link" id="bundledDataLink" href="?ticks"
+                      data-file="ticks.csv" data-label="Chenyang's ticks">view Chenyang's ticks</a>
+            </p>
+        </div>
+
+        <div class="dashboard" id="dashboard" style="display: none;">
+            <p class="data-source" id="dataSource" hidden></p>
+            <p class="data-notice" id="dataNotice" hidden></p>
+
+            <div class="tabs" role="tablist">
+                <button type="button" class="tab-button is-active" role="tab"
+                        data-tab="routes" aria-selected="true">Routes</button>
+                <button type="button" class="tab-button" role="tab"
+                        data-tab="boulder" aria-selected="false">Bouldering</button>
+            </div>
+
+            <!-- ================================ Routes ================================ -->
+            <section class="tab-panel is-active" id="tab-routes" role="tabpanel">
+                <div class="kpi-row">
+                    <div class="kpi-tile">
+                        <span class="kpi-label" id="kpiDaysLabel">Days out this year</span>
+                        <span class="kpi-value" id="kpiDaysThisYear">-</span>
+                        <span class="kpi-note" id="kpiDaysAllTime"></span>
+                    </div>
+                    <div class="kpi-tile">
+                        <span class="kpi-label">Pitches climbed</span>
+                        <span class="kpi-value" id="kpiPitches">-</span>
+                        <span class="kpi-note" id="kpiPitchesNote"></span>
+                    </div>
+                    <div class="kpi-tile">
+                        <span class="kpi-label">Vertical feet</span>
+                        <span class="kpi-value" id="kpiVerticalFeet">-</span>
+                        <span class="kpi-note" id="kpiVerticalNote"></span>
+                    </div>
+                    <div class="kpi-tile">
+                        <span class="kpi-label">Hardest send</span>
+                        <span class="kpi-value" id="kpiHardest">-</span>
+                        <span class="kpi-note" id="kpiHardestNote"></span>
+                    </div>
+                </div>
+
+                <div class="stats-table-container">
+                    <table class="stats-table">
+                        <caption class="table-caption">
+                            Every tick counts toward exactly one discipline, so the
+                            discipline columns sum to Total Pitches.
+                        </caption>
+                        <thead>
+                            <tr>
+                                <th>Period</th>
+                                <th>Routes</th>
+                                <th>Total Pitches</th>
+                                <th>Sport Pitches</th>
+                                <th>Trad Pitches</th>
+                                <th>Other Pitches</th>
+                                <th>Days Out</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="period-label">Last 7 days</td>
+                                <td id="lastWeekRoutes">-</td>
+                                <td id="lastWeekTotal">-</td>
+                                <td id="lastWeekSport">-</td>
+                                <td id="lastWeekTrad">-</td>
+                                <td id="lastWeekOther">-</td>
+                                <td id="lastWeekDays">-</td>
+                            </tr>
+                            <tr>
+                                <td class="period-label">Last 30 days</td>
+                                <td id="lastMonthRoutes">-</td>
+                                <td id="lastMonthTotal">-</td>
+                                <td id="lastMonthSport">-</td>
+                                <td id="lastMonthTrad">-</td>
+                                <td id="lastMonthOther">-</td>
+                                <td id="lastMonthDays">-</td>
+                            </tr>
+                            <tr>
+                                <td class="period-label">Last 365 days</td>
+                                <td id="lastYearRoutes">-</td>
+                                <td id="lastYearTotal">-</td>
+                                <td id="lastYearSport">-</td>
+                                <td id="lastYearTrad">-</td>
+                                <td id="lastYearOther">-</td>
+                                <td id="lastYearDays">-</td>
+                            </tr>
+                            <tr>
+                                <td class="period-label">All Time</td>
+                                <td id="allTimeRoutes">-</td>
+                                <td id="allTimeTotal">-</td>
+                                <td id="allTimeSport">-</td>
+                                <td id="allTimeTrad">-</td>
+                                <td id="allTimeOther">-</td>
+                                <td id="allTimeDays">-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="charts-grid">
+                    <div class="chart-container full-width">
+                        <h3>Climbing Activity</h3>
+                        <div id="heatmapContainer"></div>
+                    </div>
+
+                    <div class="chart-container">
+                        <h3>Pitches Per Month</h3>
+                        <div class="chart-nav" id="monthlyChartNav"></div>
+                        <canvas id="monthlyChart"></canvas>
+                    </div>
+
+                    <div class="chart-container">
+                        <h3>Pitches Per Year</h3>
+                        <canvas id="pitchesPerYearChart"></canvas>
+                    </div>
+
+                    <div class="chart-container">
+                        <h3>Days Out Per Year</h3>
+                        <canvas id="daysOutChart"></canvas>
+                    </div>
+
+                    <div class="chart-container">
+                        <h3>Vertical Feet Per Year</h3>
+                        <canvas id="verticalFeetChart"></canvas>
+                    </div>
+
+                    <div class="chart-container">
+                        <h3>First-Try Success Rate</h3>
+                        <p class="chart-subtitle">Share of lead attempts sent onsight or flash</p>
+                        <canvas id="onsightRateChart"></canvas>
+                    </div>
+
+                    <div class="chart-container">
+                        <h3>Send Pyramid</h3>
+                        <p class="chart-subtitle">Clean sends per grade, hardest first</p>
+                        <canvas id="pyramidChart"></canvas>
+                    </div>
+
+                    <div class="chart-container">
+                        <h3>Median Send Grade</h3>
+                        <p class="chart-subtitle">Typical grade sent each month</p>
+                        <canvas id="medianSendChart"></canvas>
+                    </div>
+
+                    <div class="chart-container">
+                        <h3>Personal Best - Sport</h3>
+                        <canvas id="sportGradesChart"></canvas>
+                    </div>
+
+                    <div class="chart-container">
+                        <h3>Personal Best - Trad</h3>
+                        <canvas id="tradGradesChart"></canvas>
+                    </div>
+
+                    <div class="chart-container">
+                        <h3>Grade Distribution - Sport</h3>
+                        <canvas id="sportDistributionChart"></canvas>
+                    </div>
+
+                    <div class="chart-container">
+                        <h3>Grade Distribution - Trad</h3>
+                        <canvas id="tradDistributionChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="milestones-container">
+                    <h3>Grade Milestones</h3>
+                    <p class="chart-subtitle">First ascent at each letter grade</p>
+                    <div class="subtabs" role="tablist">
+                        <button type="button" class="subtab-button is-active" role="tab"
+                                data-milestone="routes" data-style="onsight" aria-selected="true">Onsight</button>
+                        <button type="button" class="subtab-button" role="tab"
+                                data-milestone="routes" data-style="redpoint" aria-selected="false">Redpoint</button>
+                    </div>
+                    <div class="table-scroll">
+                        <table class="data-table" id="milestonesTable">
+                            <thead>
+                                <tr>
+                                    <th>Grade</th>
+                                    <th>First sent</th>
+                                    <th>Route</th>
+                                    <th>Discipline</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ============================== Bouldering ============================== -->
+            <section class="tab-panel" id="tab-boulder" role="tabpanel" hidden>
+                <div class="kpi-row">
+                    <div class="kpi-tile">
+                        <span class="kpi-label">Problems</span>
+                        <span class="kpi-value" id="bKpiProblems">-</span>
+                        <span class="kpi-note" id="bKpiProblemsNote"></span>
+                    </div>
+                    <div class="kpi-tile">
+                        <span class="kpi-label">Days out</span>
+                        <span class="kpi-value" id="bKpiDays">-</span>
+                        <span class="kpi-note"></span>
+                    </div>
+                    <div class="kpi-tile">
+                        <span class="kpi-label">Hardest send</span>
+                        <span class="kpi-value" id="bKpiHardest">-</span>
+                        <span class="kpi-note"></span>
+                    </div>
+                    <div class="kpi-tile">
+                        <span class="kpi-label">Flash rate</span>
+                        <span class="kpi-value" id="bKpiFlashRate">-</span>
+                        <span class="kpi-note" id="bKpiFlashNote"></span>
+                    </div>
+                </div>
+
+                <div class="stats-table-container">
+                    <table class="stats-table">
+                        <thead>
+                            <tr>
+                                <th>Period</th>
+                                <th>Problems</th>
+                                <th>Ticks</th>
+                                <th>Sends</th>
+                                <th>Flashes</th>
+                                <th>Hardest</th>
+                                <th>Days Out</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="period-label">Last 7 days</td>
+                                <td id="bLastWeekProblems">-</td>
+                                <td id="bLastWeekTicks">-</td>
+                                <td id="bLastWeekSends">-</td>
+                                <td id="bLastWeekFlashes">-</td>
+                                <td id="bLastWeekHardest">-</td>
+                                <td id="bLastWeekDays">-</td>
+                            </tr>
+                            <tr>
+                                <td class="period-label">Last 30 days</td>
+                                <td id="bLastMonthProblems">-</td>
+                                <td id="bLastMonthTicks">-</td>
+                                <td id="bLastMonthSends">-</td>
+                                <td id="bLastMonthFlashes">-</td>
+                                <td id="bLastMonthHardest">-</td>
+                                <td id="bLastMonthDays">-</td>
+                            </tr>
+                            <tr>
+                                <td class="period-label">Last 365 days</td>
+                                <td id="bLastYearProblems">-</td>
+                                <td id="bLastYearTicks">-</td>
+                                <td id="bLastYearSends">-</td>
+                                <td id="bLastYearFlashes">-</td>
+                                <td id="bLastYearHardest">-</td>
+                                <td id="bLastYearDays">-</td>
+                            </tr>
+                            <tr>
+                                <td class="period-label">All Time</td>
+                                <td id="bAllTimeProblems">-</td>
+                                <td id="bAllTimeTicks">-</td>
+                                <td id="bAllTimeSends">-</td>
+                                <td id="bAllTimeFlashes">-</td>
+                                <td id="bAllTimeHardest">-</td>
+                                <td id="bAllTimeDays">-</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="charts-grid">
+                    <div class="chart-container full-width">
+                        <h3>Bouldering Activity</h3>
+                        <div id="boulderHeatmapContainer"></div>
+                    </div>
+
+                    <div class="chart-container">
+                        <h3>V-Grade Distribution</h3>
+                        <canvas id="boulderDistributionChart"></canvas>
+                    </div>
+
+                    <div class="chart-container">
+                        <h3>Send Pyramid</h3>
+                        <p class="chart-subtitle">Clean sends per grade, hardest first</p>
+                        <canvas id="boulderPyramidChart"></canvas>
+                    </div>
+
+                    <div class="chart-container">
+                        <h3>Personal Best</h3>
+                        <canvas id="boulderGradesChart"></canvas>
+                    </div>
+
+                    <div class="chart-container">
+                        <h3>Flash Rate By Grade</h3>
+                        <p class="chart-subtitle">Share of attempts sent first try</p>
+                        <canvas id="boulderFlashRateChart"></canvas>
+                    </div>
+
+                    <div class="chart-container">
+                        <h3>Ticks Per Month</h3>
+                        <div class="chart-nav" id="boulderMonthlyChartNav"></div>
+                        <canvas id="boulderMonthlyChart"></canvas>
+                    </div>
+
+                    <div class="chart-container">
+                        <h3>Ticks Per Year</h3>
+                        <canvas id="boulderTicksPerYearChart"></canvas>
+                    </div>
+
+                    <div class="chart-container">
+                        <h3>Days Out Per Year</h3>
+                        <canvas id="boulderDaysOutChart"></canvas>
+                    </div>
+
+                    <div class="chart-container">
+                        <h3>Median Send Grade</h3>
+                        <p class="chart-subtitle">Typical grade sent each month</p>
+                        <canvas id="boulderMedianChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="milestones-container">
+                    <h3>Grade Milestones</h3>
+                    <p class="chart-subtitle">First ascent at each V grade</p>
+                    <div class="subtabs" role="tablist">
+                        <button type="button" class="subtab-button is-active" role="tab"
+                                data-milestone="boulder" data-style="flash" aria-selected="true">Flash</button>
+                        <button type="button" class="subtab-button" role="tab"
+                                data-milestone="boulder" data-style="send" aria-selected="false">Send</button>
+                    </div>
+                    <div class="table-scroll">
+                        <table class="data-table" id="boulderMilestonesTable">
+                            <thead>
+                                <tr>
+                                    <th>Grade</th>
+                                    <th>First sent</th>
+                                    <th>Problem</th>
+                                    <th>Style</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="loading" id="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>Processing your data...</p>
+        </div>
+    </div>
+
+    <script src="js/utils.js"></script>
+    <script src="js/csv-parser.js"></script>
+    <script src="js/analytics.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -48,3 +48,12 @@ paper_category_order:
 # Details for the RSS feed generator
 url:            'https://www.chenyang.co'
 author:         'Chenyang Yuan'
+
+# Files kept in the repo but never copied into _site. A markdown file without
+# front matter is treated as a static file and served verbatim, so project
+# READMEs have to be excluded explicitly.
+# Jekyll appends its own DEFAULT_EXCLUDES to this list, so nothing is lost by
+# setting it here.
+exclude:
+  - climbing-dashboard/README.md
+  - CLAUDE.md

@@ -14,7 +14,9 @@ titlebar: Chenyang Yuan's Climbing Page
 I started climbing on and off since 2016 but got into it more seriously
 in 2021. Here are some stats I collected since then. See also my [mountain
 project
-ticks](https://www.mountainproject.com/user/201277033/chenyang-yuan){:target="_blank"}.
+ticks](https://www.mountainproject.com/user/201277033/chenyang-yuan){:target="_blank"},
+or explore them interactively in my [climbing
+dashboard](/climbing-dashboard/?ticks).
 
 <div class="image-right">
   <img src="/assets/images/climbing10.jpg" width="260"
