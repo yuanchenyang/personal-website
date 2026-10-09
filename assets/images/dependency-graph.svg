@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1900" height="1080" viewBox="0 0 1900 1080" role="img" aria-labelledby="title desc">
-  <title id="title">Depandency graph</title>
+  <title id="title">Dependency graph</title>
   <desc id="desc">Static dependency graph showing the main theorem, its bridge lemmas, and the core algebraic ingredients used in the Lean proof.</desc>
   <defs>
     <style>
@@ -24,7 +24,7 @@
 
   <rect class="bg" x="0" y="0" width="1900" height="1080"/>
 
-  <text class="title" x="80" y="40">Depandency graph</text>
+  <text class="title" x="80" y="40">Dependency graph</text>
   <text class="subtitle" x="80" y="68">Arrows indicate immediate proof dependencies. Read the graph from the bottom up.</text>
 
   <g transform="translate(1480,22)">
@@ -41,26 +41,26 @@
   <path class="edge" d="M 950 98 V 124 H 400 V 150"/>
   <path class="edge" d="M 950 98 V 124 H 1340 V 150"/>
 
-  <path class="edge" d="M 400 224 V 262 H 170 V 300"/>
-  <path class="edge" d="M 400 224 V 262 H 490 V 300"/>
-  <path class="edge" d="M 400 224 V 262 H 820 V 300"/>
-  <path class="edge" d="M 400 224 V 262 H 490 V 430"/>
+  <path class="edge" d="M 400 224 V 262 H 160 V 300"/>
+  <path class="edge" d="M 400 224 V 262 H 480 V 300"/>
+  <path class="edge" d="M 400 224 V 262 H 840 V 300"/>
+  <path class="edge" d="M 400 224 V 262 H 480 V 430"/>
 
-  <path class="edge" d="M 1340 224 V 262 H 1190 V 300"/>
-  <path class="edge" d="M 1340 224 V 262 H 1595 V 300"/>
+  <path class="edge" d="M 1340 224 V 262 H 1200 V 300"/>
+  <path class="edge" d="M 1340 224 V 262 H 1610 V 300"/>
 
-  <path class="edge" d="M 820 374 V 430"/>
-  <path class="edge" d="M 820 504 V 560"/>
-  <path class="edge" d="M 820 634 V 690"/>
-  <path class="edge" d="M 820 764 V 792 H 560 V 820"/>
-  <path class="edge" d="M 820 764 V 792 H 940 V 820"/>
+  <path class="edge" d="M 840 374 V 430"/>
+  <path class="edge" d="M 840 504 V 560"/>
+  <path class="edge" d="M 840 634 V 690"/>
+  <path class="edge" d="M 840 764 V 792 H 560 V 820"/>
+  <path class="edge" d="M 840 764 V 792 H 940 V 820"/>
   <path class="edge" d="M 560 894 V 922 H 340 V 950"/>
   <path class="edge" d="M 560 894 V 922 H 680 V 950"/>
-  <path class="edge" d="M 940 894 V 922 H 1020 V 950"/>
+  <path class="edge" d="M 940 894 V 922 H 1040 V 950"/>
 
-  <path class="edge" d="M 1595 374 V 430"/>
-  <path class="edge" d="M 1595 504 V 532 H 1395 V 560"/>
-  <path class="edge" d="M 1595 504 V 532 H 1710 V 560"/>
+  <path class="edge" d="M 1610 374 V 430"/>
+  <path class="edge" d="M 1610 504 V 532 H 1395 V 560"/>
+  <path class="edge" d="M 1610 504 V 532 H 1710 V 560"/>
   <path class="edge" d="M 1395 634 V 690"/>
 
   <g transform="translate(740,24)">
@@ -82,42 +82,42 @@
   </g>
 
   <g transform="translate(20,300)">
-    <rect class="node core" x="0" y="0" width="300" height="74"/>
-    <text class="nodeTitle" x="150" y="29">gcd_sigma_decomposition</text>
-    <text class="nodeFile" x="150" y="52">UnivariateAlgebraCore.lean</text>
+    <rect class="node core" x="0" y="0" width="280" height="74"/>
+    <text class="nodeTitle" x="140" y="29">gcd_sigma_decomposition</text>
+    <text class="nodeFile" x="140" y="52">UnivariateAlgebraCore.lean</text>
   </g>
 
-  <g transform="translate(340,300)">
-    <rect class="node bridge" x="0" y="0" width="300" height="74"/>
-    <text class="nodeTitle" x="150" y="29">residual_eq_zero_of_zero_socp</text>
-    <text class="nodeFile" x="150" y="52">RankTwoMain.lean</text>
+  <g transform="translate(322,300)">
+    <rect class="node bridge" x="0" y="0" width="316" height="74"/>
+    <text class="nodeTitle" x="158" y="29">residual_eq_zero_of_zero_socp</text>
+    <text class="nodeFile" x="158" y="52">RankTwoMain.lean</text>
   </g>
 
-  <g transform="translate(660,300)">
-    <rect class="node bridge" x="0" y="0" width="320" height="74"/>
-    <text class="nodeTitle" x="160" y="29">factor_peeling_certificate_step</text>
-    <text class="nodeFile" x="160" y="52">RankTwoMain.lean</text>
+  <g transform="translate(665,300)">
+    <rect class="node bridge" x="0" y="0" width="350" height="74"/>
+    <text class="nodeTitle" x="175" y="29">factor_peeling_certificate_step</text>
+    <text class="nodeFile" x="175" y="52">RankTwoMain.lean</text>
   </g>
 
-  <g transform="translate(340,430)">
+  <g transform="translate(330,430)">
     <rect class="node algebra" x="0" y="0" width="300" height="74"/>
     <text class="nodeTitle" x="150" y="29">hgroup_affine</text>
     <text class="nodeFile" x="150" y="52">UnivariateSOS.lean</text>
   </g>
 
-  <g transform="translate(660,430)">
-    <rect class="node bridge" x="0" y="0" width="320" height="74"/>
-    <text class="nodeTitle" x="160" y="29">factor_peeling_image_orthogonal</text>
-    <text class="nodeFile" x="160" y="52">UnivariateAlgebra.lean</text>
+  <g transform="translate(665,430)">
+    <rect class="node bridge" x="0" y="0" width="350" height="74"/>
+    <text class="nodeTitle" x="175" y="29">factor_peeling_image_orthogonal</text>
+    <text class="nodeFile" x="175" y="52">UnivariateAlgebra.lean</text>
   </g>
 
-  <g transform="translate(660,560)">
+  <g transform="translate(680,560)">
     <rect class="node bridge" x="0" y="0" width="320" height="74"/>
     <text class="nodeTitle" x="160" y="29">factor_peeling_path</text>
     <text class="nodeFile" x="160" y="52">UnivariateAlgebra.lean</text>
   </g>
 
-  <g transform="translate(660,690)">
+  <g transform="translate(680,690)">
     <rect class="node bridge" x="0" y="0" width="320" height="74"/>
     <text class="nodeTitle" x="160" y="29">factor_peeling_schedule</text>
     <text class="nodeFile" x="160" y="52">UnivariateAlgebra.lean</text>
@@ -147,28 +147,28 @@
     <text class="nodeFile" x="160" y="52">UnivariateAlgebraCore.lean</text>
   </g>
 
-  <g transform="translate(860,950)">
-    <rect class="node algebra" x="0" y="0" width="320" height="74"/>
-    <text class="nodeTitle" x="160" y="29">hasPeelingWitness_of_factor_step</text>
-    <text class="nodeFile" x="160" y="52">PeelingStep.lean</text>
+  <g transform="translate(865,950)">
+    <rect class="node algebra" x="0" y="0" width="350" height="74"/>
+    <text class="nodeTitle" x="175" y="29">hasPeelingWitness_of_factor_step</text>
+    <text class="nodeFile" x="175" y="52">PeelingStep.lean</text>
   </g>
 
   <g transform="translate(1040,300)">
-    <rect class="node bridge" x="0" y="0" width="300" height="74"/>
-    <text class="nodeTitle" x="150" y="29">transformed_image_plus_cone</text>
-    <text class="nodeFile" x="150" y="52">FactoredCase.lean</text>
+    <rect class="node bridge" x="0" y="0" width="320" height="74"/>
+    <text class="nodeTitle" x="160" y="29">transformed_image_plus_cone</text>
+    <text class="nodeFile" x="160" y="52">FactoredCase.lean</text>
   </g>
 
-  <g transform="translate(1420,300)">
-    <rect class="node bridge" x="0" y="0" width="350" height="74"/>
-    <text class="nodeTitle" x="175" y="29">factored_h1_decomposition_to_original</text>
-    <text class="nodeFile" x="175" y="52">FactoredCase.lean</text>
+  <g transform="translate(1410,300)">
+    <rect class="node bridge" x="0" y="0" width="400" height="74"/>
+    <text class="nodeTitle" x="200" y="29">factored_h1_decomposition_to_original</text>
+    <text class="nodeFile" x="200" y="52">FactoredCase.lean</text>
   </g>
 
-  <g transform="translate(1420,430)">
-    <rect class="node bridge" x="0" y="0" width="350" height="74"/>
-    <text class="nodeTitle" x="175" y="29">inImagePlusSigmaKerCone_of_h1_data</text>
-    <text class="nodeFile" x="175" y="52">H1Case.lean</text>
+  <g transform="translate(1410,430)">
+    <rect class="node bridge" x="0" y="0" width="400" height="74"/>
+    <text class="nodeTitle" x="200" y="29">inImagePlusSigmaKerCone_of_h1_data</text>
+    <text class="nodeFile" x="200" y="52">H1Case.lean</text>
   </g>
 
   <g transform="translate(1230,560)">

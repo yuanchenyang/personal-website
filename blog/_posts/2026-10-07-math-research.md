@@ -6,7 +6,7 @@ categories: agents math
 meta_title: Reflections on automating theorem proving
 meta_description: Over the past five months, agents have gone from constantly making mistakes in proofs to correctly one-shotting difficult theorems. In this post, I reflect on their rapid progress, summarize numerous refinements/updates to my workflows, and lay out my thoughts on what is worth working on in the future.
 meta_type: article
-meta_image:
+meta_image: https://www.chenyang.co/assets/images/dependency-graph-social.png
 twitter_card: summary_large_image
 ---
 
