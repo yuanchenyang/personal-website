@@ -1,0 +1,17 @@
+{% comment %}
+  Badges linking to the dataset on Hugging Face.
+  Usage: {% include sdp-dataset/badges.html badges="dataset,overview,solvers,viewer" %}
+{% endcomment %}
+{% assign hf = "https://huggingface.co" %}
+<div class="sdp-wrap">
+<link rel="stylesheet" type="text/css" href="/assets/css/sdp-dataset.css" />
+<div class="sdp-badges">
+{% assign badges = include.badges | split: "," %}
+{% for badge in badges %}{% case badge %}
+{% when "dataset" %}<a href="{{ hf }}/datasets/yuanchenyang/mathoptdataset-sdp" target="_blank"><img src="https://img.shields.io/badge/Hugging%20Face-dataset-yellow?logo=huggingface" alt="Dataset on Hugging Face" /></a>
+{% when "viewer" %}<a href="{{ hf }}/datasets/yuanchenyang/mathoptdataset-sdp/viewer" target="_blank"><img src="https://img.shields.io/badge/Hugging%20Face-dataset%20viewer-orange?logo=huggingface" alt="Dataset viewer on Hugging Face" /></a>
+{% when "overview" %}<a href="{{ hf }}/spaces/yuanchenyang/mathoptdataset-sdp-overview" target="_blank"><img src="https://img.shields.io/badge/Spaces-instance%20overview-blue?logo=huggingface" alt="Instance overview in Spaces" /></a>
+{% when "solvers" %}<a href="{{ hf }}/spaces/yuanchenyang/mathoptdataset-sdp-solvers" target="_blank"><img src="https://img.shields.io/badge/Spaces-solver%20results-green?logo=huggingface" alt="Solver results in Spaces" /></a>
+{% endcase %}{% endfor %}
+</div>
+</div>

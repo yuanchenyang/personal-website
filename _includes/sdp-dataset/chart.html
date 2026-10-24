@@ -1,0 +1,11 @@
+{% comment %}
+  An interactive figure for the SDP dataset post, drawn by /assets/js/sdp-dataset.js.
+  Usage: {% include sdp-dataset/chart.html chart="performance-profile" %}
+  Charts: tags, variables-constraints, solved-count, solved-by-one, checked-error,
+          consensus, head-to-head, performance-profile, rank
+{% endcomment %}
+<div class="sdp-wrap">
+<link rel="stylesheet" type="text/css" href="/assets/css/sdp-dataset.css" />
+<figure class="sdp-fig" data-chart="{{ include.chart }}"></figure>
+<script defer src="/assets/js/sdp-dataset.js"></script>
+</div>

@@ -1,0 +1,51 @@
+{% comment %}
+  The metadata of a typical instance (Parrilo COP5 level-2 membership Gram SDP): its
+  YAML sidecar next to the structure derived from its MathOptFormat model.
+  Usage: {% include sdp-dataset/metadata.html %}
+{% endcomment %}
+<div class="sdp-wrap">
+<link rel="stylesheet" type="text/css" href="/assets/css/sdp-dataset.css" />
+<figure class="sdp-meta">
+<div class="sdp-meta-card">
+<div class="sdp-meta-files"><span>dataset/sdp/h80-9f/</span><code>parrilo_cop5_k2_membership_sdp.mof.json.zst</code><code>parrilo_cop5_k2_membership_sdp.yaml</code></div>
+<div class="sdp-meta-body">
+<pre class="sdp-yaml"><span class="k">schema_version:</span> <span class="n">1</span>
+<span class="k">id:</span> sdp/parrilo_cop5_k2_membership_sdp
+<span class="k">title:</span> Parrilo COP5 level-2 membership Gram SDP
+<span class="k">category:</span> sdp
+<span class="k">description:</span> "Fixed feasibility problem for Theorem 3.1 of Shen and Zhong. The fixed rational separator is M*=DHD+J/300; variables are its degree-4 SOS Gram entries for (sum_i x_i^2)^2 (x^circ2)^T M* (x^circ2)."
+<span class="k">tags:</span> [continuous, imported, sdp, copositive, polynomial, semidefinite]
+<span class="k">provenance:</span>
+  <span class="k">kind:</span> imported
+  <span class="k">source_id:</span> parrilo-copositive-separators
+  <span class="k">citation:</span> Shen and Zhong, Explicit Separators for Consecutive Levels of Parrilo's Sum-of-Squares Hierarchy over the Copositive Cone, arXiv:2608.27743, Theorem 3.1 and certificate archive k5_certificate_bundle.json.
+  <span class="k">source_url:</span> https://arxiv.org/abs/2608.27743
+  <span class="k">license:</span> CC-BY-4.0
+<span class="k">expected:</span>
+  <span class="k">status:</span> optimal
+<span class="k">solution:</span>
+  <span class="k">solver:</span> Mosek 11.2.4
+  <span class="k">status:</span> optimal
+  <span class="k">solve_time:</span> <span class="n">0.042208881000988185</span>
+  <span class="k">date:</span> '2026-09-23'</pre>
+<div class="sdp-meta-stats">
+<h6>Derived from the model</h6>
+<dl>
+<dt>Objective</dt><dd>feasibility</dd>
+<dt>Variables</dt><dd>2,485 scalars</dd>
+<dt>Constraints</dt><dd>495 equalities, 1 PSD cone</dd>
+<dt>PSD blocks</dt><dd>1 block of order 70</dd>
+<dt>Nonzeros</dt><dd>4,970</dd>
+<dt>Size</dt><dd>239 KiB JSON, 11 KiB stored (zstd)</dd>
+</dl>
+<h6>Format</h6>
+<dl>
+<dt>Model</dt><dd><a href="https://github.com/jump-dev/MathOptFormat">MathOptFormat</a> 1.9</dd>
+<dt>Cones</dt><dd><span class="sdp-chip">PositiveSemidefiniteConeTriangle</span><span class="sdp-chip">EqualTo</span></dd>
+</dl>
+</div>
+</div>
+</div>
+<figcaption>The files for a sum-of-squares feasibility problem from Shen and Zhong's separators for Parrilo's copositive hierarchy: the model in <code>MathOptFormat</code>, and its YAML metadata recording where it came from, its license, the expected status and the result of a reference solve.</figcaption>
+</figure>
+</div>

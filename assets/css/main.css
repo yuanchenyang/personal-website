@@ -299,3 +299,10 @@ figure {
 .spotlight {
   font-weight: bold;
 }
+
+/* screen.css shrinks h4 to 2.3rem on phones; keep h5 subheadings below it */
+@media only screen and (max-width: 500px) {
+    h5 {
+        font-size: 2rem;
+    }
+}
