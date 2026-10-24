@@ -6,7 +6,7 @@ categories: agents optimization dataset
 meta_title: Building a comprehensive dataset of semidefinite programs
 meta_description: I used parallel coding agents to collect and convert more than 5,000 semidefinite programs from the internet into a single dataset, then benchmarked 10 SDP solvers on it for accuracy and speed
 meta_type: article
-meta_image: /assets/images/sdp-dataset-social.png
+meta_image: https://www.chenyang.co/assets/images/sdp-dataset-social.png
 twitter_card: summary_large_image
 ---
 
