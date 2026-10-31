@@ -1,0 +1,153 @@
+/* Figures for the "The future of optimization solvers is instance-specific specialization" post.
+   Figures are drawn by /assets/js/lp-solvers.js from /assets/data/lp-solvers.json. */
+
+.lps-badges { display: flex; flex-wrap: wrap; gap: 6px; margin: 1.2em 0; }
+.post-content .lps-badges img { display: inline-block; margin: 0; height: 20px; }
+
+.lps-fig, #lps-tip {
+  --surface: #ffffff; --sunken: #f3f4f5; --ink: #3A4145; --ink-2: #50585D; --muted: #869095;
+  --line: #e3e6e8; --axis: #c8ccce; --accent: #23395d;
+  --opus: #2a78d6; --astra: #eb6834; --gp1: #3f4855; --gp2: #7b8494; --gp3: #a9b0bb;
+  --good: #0ca30c; --warn: #fab219; --serious: #ec835a; --critical: #d03b3b;
+  --mono: Inconsolata, monospace, sans-serif;
+}
+.lps-fig {
+  margin: 2.4em 0;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  font-style: normal;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  text-align: left;
+  color: var(--ink);
+  hyphens: manual;
+  word-break: normal;
+}
+.lps-fig .lps-title { font-size: 1.6rem; font-weight: 700; line-height: 1.3; margin: 0; color: var(--ink); }
+.lps-fig .lps-sub { font-size: 1.35rem; line-height: 1.4; margin: 2px 0 0; color: var(--ink-2); }
+.lps-fig .lps-sub code { font-size: 1.4rem; }
+.lps-fig .lps-body { margin-top: 8px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; }
+/* Captions keep the site's italic figure style. */
+.lps-fig figcaption { font-size: 1.3rem; line-height: 1.45; color: var(--muted); margin-top: 8px; font-style: italic; text-align: center; }
+
+/* Undo the post's prose spacing inside the figures */
+.lps-fig p, .lps-fig ul, .lps-fig ol, .lps-fig table { margin: 0; }
+.lps-fig h3, .lps-fig h4 { margin: 0; line-height: 1.3; color: var(--ink); }
+.lps-fig h3 { font-size: 1.5rem; font-weight: 700; }
+.lps-fig h4 { font-size: 1.35rem; font-weight: 700; }
+.lps-fig code, .lps-fig .mono { font-family: var(--mono); font-size: 1.05em; }
+.lps-fig .muted { color: var(--muted); }
+.lps-fig .small { font-size: 1.3rem; color: var(--ink-2); }
+
+.lps-fig svg { display: block; overflow: visible; font-family: 'Open Sans', sans-serif; }
+.lps-fig .chart { width: 100%; position: relative; min-height: 40px; }
+.lps-fig .chart-title { display: flex; justify-content: space-between; gap: 6px 12px; flex-wrap: wrap; align-items: baseline; }
+.lps-fig .legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 2px 14px; margin: 8px 0 2px; font-size: 1.25rem; line-height: 1.6; color: var(--ink-2); align-items: center; }
+.lps-fig .chart-title .legend { justify-content: flex-start; margin: 0; }
+.lps-fig .legend span { display: inline-flex; align-items: center; gap: 6px; }
+.lps-fig .caption { font-size: 1.25rem; line-height: 1.45; color: var(--muted); font-style: italic; }
+
+/* SVG text */
+.lps-fig .ax text, .lps-fig text.ax { fill: var(--muted); font-size: 11px; font-variant-numeric: tabular-nums; }
+.lps-fig .grid-line { stroke: #ececec; stroke-width: 1; }
+.lps-fig .base-line { stroke: var(--axis); stroke-width: 1; }
+.lps-fig text.lab { fill: var(--ink-2); font-size: 12px; }
+.lps-fig text.lab-strong { fill: var(--ink); font-size: 12.5px; font-weight: 700; }
+.lps-fig text.grp { fill: var(--ink); font-size: 12.5px; font-weight: 700; }
+.lps-fig text.val { fill: var(--ink); font-size: 11.5px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.lps-fig text.val.start-label { fill: var(--muted); font-weight: 400; }
+.lps-fig text.start-label, .lps-fig text.end-label { paint-order: stroke; stroke: var(--surface); stroke-width: 7px; stroke-linejoin: round; pointer-events: none; }
+.lps-fig text.val.short { fill: var(--critical); }
+.lps-fig .hl { stroke: var(--ink) !important; stroke-width: 3px !important; }
+.lps-fig .cross { stroke: var(--ink-2); stroke-width: 1; stroke-dasharray: 3 3; pointer-events: none; }
+.lps-fig .ring { fill: none; stroke-width: 2; pointer-events: none; }
+
+/* Tabs and switches */
+.lps-fig .tabs { display: flex; gap: 2px; overflow-x: auto; border-bottom: 1px solid var(--line); scrollbar-width: thin; }
+.lps-fig .tabs button { font: inherit; font-size: 1.3rem; background: none; border: 0; color: var(--ink-2); padding: 8px 10px 7px; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; white-space: nowrap; }
+.lps-fig .tabs button:hover { color: var(--ink); }
+.lps-fig .tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--opus); font-weight: 700; }
+.lps-fig .tabs .tg { font-size: 1.05rem; color: var(--muted); margin-left: 5px; font-weight: 400; letter-spacing: 0.04em; }
+.lps-fig button:focus-visible, .lps-fig summary:focus-visible { outline: 2px solid var(--opus); outline-offset: 2px; }
+.lps-fig .toolbar { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+.lps-fig .seg { display: inline-flex; background: var(--sunken); border-radius: 7px; padding: 3px; gap: 2px; flex-wrap: wrap; }
+.lps-fig .seg button { font: inherit; font-size: 1.25rem; border: 0; background: none; color: var(--ink-2); padding: 3px 10px; border-radius: 5px; cursor: pointer; }
+.lps-fig .seg button[aria-pressed="true"] { background: var(--surface); color: var(--ink); box-shadow: 0 1px 2px rgba(0,0,0,0.12); font-weight: 700; }
+
+/* Tab panes */
+.lps-fig .panel-body { padding: 14px 0 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+.lps-fig .panel-body > * { min-width: 0; }
+.lps-fig .lbl { font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); font-weight: 700; margin-bottom: 4px; }
+.lps-fig ul.tight { padding-left: 1.2em; display: grid; gap: 4px; }
+.lps-fig ul.tight li::marker { color: var(--muted); }
+.lps-fig .pill { display: inline-block; font-size: 1.1rem; line-height: 1.6; padding: 0 7px; border-radius: 99px; background: var(--sunken); color: var(--ink-2); white-space: nowrap; }
+.lps-fig .pill.pub { background: #eef4fa; color: #1d5a8c; }
+.lps-fig .tbl-wrap { overflow-x: auto; }
+.lps-fig table.t { border-collapse: collapse; width: 100%; font-size: 1.25rem; font-variant-numeric: tabular-nums; }
+.lps-fig table.t th { text-align: left; font-weight: 700; color: var(--muted); font-size: 1.05rem; text-transform: uppercase; letter-spacing: 0.05em; padding: 5px 8px; border: 0; border-bottom: 1px solid var(--line); white-space: nowrap; background: none; line-height: 1.4; }
+.lps-fig table.t td { padding: 4px 8px; border: 0; border-bottom: 1px solid var(--line); white-space: nowrap; background: none !important; line-height: 1.4; }
+.lps-fig table.t td.r, .lps-fig table.t th.r { text-align: right; }
+.lps-fig details > summary { cursor: pointer; }
+.lps-fig details.more summary { color: var(--ink-2); font-size: 1.3rem; list-style: none; }
+.lps-fig details.more summary::-webkit-details-marker { display: none; }
+.lps-fig details.more summary::before { content: ""; display: inline-block; vertical-align: 2px; margin: 0 10px 0 2px; width: 6px; height: 6px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(-45deg); transition: transform 0.12s; flex: none; }
+.lps-fig details.more[open] summary::before { transform: rotate(45deg); }
+.lps-fig details.more[open] summary { margin-bottom: 8px; }
+
+/* Figure 1: tasks */
+.lps-fig .task-top { display: flex; flex-wrap: wrap; gap: 12px 24px; align-items: center; }
+.lps-fig .formula { flex: 1 1 340px; min-width: 0; background: var(--sunken); border-radius: 6px; padding: 4px 14px; overflow-x: auto; font-size: 1.5rem; }
+.lps-fig .sk { flex: 0 1 300px; margin: 0; display: grid; gap: 4px; }
+.lps-fig .schem { width: 100%; max-width: 300px; }
+.lps-fig .schem-cap { font-size: 1.15rem; color: var(--muted); font-style: italic; }
+.lps-fig .facts-inline { display: flex; flex-wrap: wrap; gap: 2px 20px; font-size: 1.3rem; }
+
+/* Figure 2: development */
+.lps-fig .grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap: 20px; }
+.lps-fig .grid2 > .cell { display: grid; gap: 8px; min-width: 0; align-content: start; }
+.lps-fig .agents { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: 16px; }
+.lps-fig .agent-card { border: 1px solid var(--line); border-radius: 6px; padding: 14px; display: grid; gap: 12px; align-content: start; min-width: 0; }
+.lps-fig .agent-card .who { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.lps-fig .sw { display: inline-block; width: 12px; height: 12px; border-radius: 50%; flex: none; }
+.lps-fig .sw.opus { background: var(--opus); } .lps-fig .sw.astra { background: var(--astra); }
+.lps-fig .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px 14px; }
+.lps-fig .stat .v { font-weight: 700; font-size: 1.6rem; font-variant-numeric: tabular-nums; }
+.lps-fig .stat .l { font-size: 1.1rem; color: var(--muted); line-height: 1.3; }
+.lps-fig .folds { display: grid; gap: 2px; }
+.lps-fig details.fold > summary { list-style: none; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); font-weight: 700; padding: 5px 0; display: flex; align-items: center; gap: 8px; }
+.lps-fig details.fold > summary::-webkit-details-marker { display: none; }
+.lps-fig details.fold > summary::before { content: ""; width: 6px; height: 6px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(-45deg); transition: transform 0.12s; flex: none; }
+.lps-fig details.fold[open] > summary::before { transform: rotate(45deg); }
+.lps-fig details.fold > summary:hover { color: var(--ink); }
+.lps-fig details.fold[open] > summary { margin-bottom: 4px; }
+.lps-fig .devlog { list-style: none; padding: 0; display: grid; border-left: 2px solid var(--line); }
+/* The code button sits at the right of the first fold's row and stays there when folds open. */
+.lps-fig .folds { position: relative; }
+.lps-fig .folds > details:first-of-type > summary { padding-right: 110px; }
+.lps-fig .code-btn { position: absolute; top: 1px; right: 0; padding: 2px 10px; border: 1px solid var(--opus); border-radius: 5px; color: var(--opus); font-size: 1.25rem; font-weight: 700; text-decoration: none; white-space: nowrap; }
+.lps-fig .code-btn:hover { background: var(--opus); color: #fff; }
+.lps-fig .devlog .cl { font-size: 1.15rem; color: var(--opus); text-decoration: none; white-space: nowrap; padding-top: 1px; }
+.lps-fig .devlog .cl:hover { text-decoration: underline; }
+.lps-fig .devlog li { display: grid; grid-template-columns: 48px minmax(0, 1fr) auto auto; gap: 10px; padding: 4px 8px 4px 10px; font-size: 1.25rem; line-height: 1.4; cursor: default; border-radius: 0 5px 5px 0; }
+.lps-fig .devlog li:hover, .lps-fig .devlog li.on { background: var(--sunken); }
+.lps-fig .devlog .t, .lps-fig .devlog .sc { font-size: 1.15rem; color: var(--muted); padding-top: 1px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.lps-fig .devlog .sc { color: var(--ink-2); }
+
+@media only screen and (max-width: 500px) {
+  .lps-fig .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  /* Dev-log score and code link move under the entry's text */
+  .lps-fig .devlog li { grid-template-columns: 44px auto 1fr; grid-template-areas: "t lt lt" ". sc cl"; row-gap: 1px; }
+  .lps-fig .devlog .t { grid-area: t; } .lps-fig .devlog .lt { grid-area: lt; }
+  .lps-fig .devlog .sc { grid-area: sc; } .lps-fig .devlog .cl { grid-area: cl; }
+}
+
+#lps-tip {
+  position: fixed; z-index: 20; pointer-events: none; max-width: 340px;
+  background: #fff; color: var(--ink); border: 1px solid rgba(0,0,0,.1); border-radius: 6px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.14); padding: 7px 10px;
+  font: 12.5px/1.45 'Open Sans', sans-serif;
+}
+#lps-tip .tt-h { font-weight: 700; margin-bottom: 3px; overflow-wrap: anywhere; }
+#lps-tip .tt-r { display: flex; justify-content: space-between; gap: 14px; font-variant-numeric: tabular-nums; }
+#lps-tip .tt-r span { color: var(--ink-2); }
+#lps-tip .tt-n { color: var(--ink-2); margin-top: 4px; }

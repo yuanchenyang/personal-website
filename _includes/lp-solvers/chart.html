@@ -1,0 +1,10 @@
+{% comment %}
+  An interactive figure for the agent-solvers post, drawn by /assets/js/lp-solvers.js.
+  Usage: {% include lp-solvers/chart.html chart="speedup" %}
+  Charts: tasks, development, speedup, ood, cross
+{% endcomment %}
+<div class="lps-wrap">
+<link rel="stylesheet" type="text/css" href="/assets/css/lp-solvers.css" />
+<figure class="lps-fig" data-chart="{{ include.chart }}"></figure>
+<script defer src="/assets/js/lp-solvers.js"></script>
+</div>

@@ -10,6 +10,8 @@ meta_image: https://www.chenyang.co/assets/images/sdp-dataset-social.png
 twitter_card: summary_large_image
 ---
 
+{% include sdp-dataset/badges.html badges="dataset,overview,solvers" %}
+
 Since models have gotten so much better at math, proofs and coding, I started
 thinking about other productive uses of the ever cheaper and more intelligent
 tokens, other than proving theorems and solving open math problems.
@@ -19,8 +21,6 @@ think it'll be incredibly useful to build a comprehensive dataset of
 optimization problem instances, and agents have gotten smart and cheap enough to
 make this happen. I started with semidefinite programs (SDPs) as they constitute
 a relatively small class that I'm quite familiar with.
-
-{% include sdp-dataset/badges.html badges="dataset,overview,solvers" %}
 
 <!--more-->
 
