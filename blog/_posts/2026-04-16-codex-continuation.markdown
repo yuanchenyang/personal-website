@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How to Keep Codex Running Indefinitely"
+title: "How to keep codex running indefinitely"
 date: 2026-04-16 00:00:00
 categories: agents
 

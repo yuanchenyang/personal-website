@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Automated Proof of a Benign Nonconvex Landscape Theorem"
+title: "Automated proof of a benign nonconvex landscape theorem"
 date: 2026-05-01 00:00:00
 categories: agents math
 meta_title: Automated Proof of a Benign Nonconvex Landscape Theorem
