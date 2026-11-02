@@ -13,22 +13,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     {% if page.meta_title %}
-    <meta property="og:title" content="{{ page.meta_title }}" />
+    <meta property="og:title" content="{{ page.meta_title | escape }}" />
+    <meta name="twitter:title" content="{{ page.meta_title | escape }}" />
     {% endif %}
     {% if page.meta_description %}
-    <meta property="og:description" content="{{ page.meta_description }}" />
+    <meta property="og:description" content="{{ page.meta_description | escape }}" />
+    <meta name="twitter:description" content="{{ page.meta_description | escape }}" />
     {% endif %}
     {% if page.meta_type %}
     <meta property="og:type" content="{{ page.meta_type }}" />
     {% endif %}
-    {% if page.meta_url %}
-    <meta property="og:url" content="{{ page.meta_url }}" />
+    {% if page.meta_title %}
+    <meta property="og:url" content="{{ page.meta_url | default: page.url | absolute_url }}" />
     {% endif %}
     {% if page.meta_image %}
-    <meta property="og:image" content="{{ page.meta_image }}" />
+    {% assign meta_image_url = page.meta_image | absolute_url %}
+    <meta property="og:image" content="{{ meta_image_url }}" />
+    <meta name="twitter:image" content="{{ meta_image_url }}" />
+    {% if page.meta_image_alt %}
+    <meta property="og:image:alt" content="{{ page.meta_image_alt | escape }}" />
+    <meta name="twitter:image:alt" content="{{ page.meta_image_alt | escape }}" />
+    {% endif %}
     {% endif %}
     {% if page.twitter_card %}
     <meta name="twitter:card" content="{{ page.twitter_card }}">
+    {% elsif page.meta_image %}
+    <meta name="twitter:card" content="summary_large_image">
     {% endif %}
 
 

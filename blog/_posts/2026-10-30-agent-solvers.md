@@ -40,8 +40,8 @@ on _speed_ (measured in a controlled sandbox environment).
 
 #### Family-specific solver development
 
-I used a sandbox to run coding harnesses (Opus 5.5 in Claude Code and
-GPT-6-Astra in Codex) to develop solvers. The base environment has development
+I used a sandbox to run coding harnesses (Claude Opus 5.5 in Claude Code and
+GPT-6 Astra in Codex) to develop solvers. The base environment has development
 tools installed for Python, C++, CUDA and Rust (agents can choose any language),
 along with standard linear-algebra libraries. Only the names of the instance
 families are given; the agents have to discover and exploit structure by
