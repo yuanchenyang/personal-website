@@ -7,7 +7,7 @@
 .lps-fig, #lps-tip {
   --surface: #ffffff; --sunken: #f3f4f5; --ink: #3A4145; --ink-2: #50585D; --muted: #869095;
   --line: #e3e6e8; --axis: #c8ccce; --accent: #23395d;
-  --opus: #2a78d6; --astra: #eb6834; --gp1: #3f4855; --gp2: #7b8494; --gp3: #a9b0bb;
+  --opus: #2a78d6; --astra: #eb6834; --astra62: #8a4fd0; --gp1: #3f4855; --gp2: #7b8494; --gp3: #a9b0bb;
   --good: #0ca30c; --warn: #fab219; --serious: #ec835a; --critical: #d03b3b;
   --mono: Inconsolata, monospace, sans-serif;
 }
@@ -109,7 +109,7 @@
 .lps-fig .agent-card { border: 1px solid var(--line); border-radius: 6px; padding: 14px; display: grid; gap: 12px; align-content: start; min-width: 0; }
 .lps-fig .agent-card .who { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
 .lps-fig .sw { display: inline-block; width: 12px; height: 12px; border-radius: 50%; flex: none; }
-.lps-fig .sw.opus { background: var(--opus); } .lps-fig .sw.astra { background: var(--astra); }
+.lps-fig .sw.opus { background: var(--opus); } .lps-fig .sw.astra { background: var(--astra); } .lps-fig .sw.astra62 { background: var(--astra62); }
 .lps-fig .stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px 14px; }
 .lps-fig .stat .v { font-weight: 700; font-size: 1.6rem; font-variant-numeric: tabular-nums; }
 .lps-fig .stat .l { font-size: 1.1rem; color: var(--muted); line-height: 1.3; }

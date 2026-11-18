@@ -24,6 +24,12 @@ detect and exploit instance-specific structure.
 
 <!--more-->
 
+**Update (11/18):** Following the release of GPT-6.2 Astra, I ran the
+development benchmarks again. Astra 6.2 outperformed the previous best runs by
+either Astra 6 or Opus 5.5 by an average of **7x**, mainly finding more
+structure exploitations. Astra 6.2's solvers are still brittle and does not
+perform significantly better on OOD tasks.
+
 #### A benchmark of LP instance families
 
 First, I built a benchmark with 5 LP instance families, with their formulation

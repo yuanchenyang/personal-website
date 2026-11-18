@@ -10,13 +10,16 @@ const DATA_URL = "/assets/data/lp-solvers.json";
 let DATA, SUM;
 
 const FAMS = ['storm', 'setcover', 'pmedian', 'cflp', 'qap'];
-const AGENTS = ['opus55-max', 'astra-high'];
+const AGENTS = ['opus55-max', 'astra-high', 'astra62-high'];
 const FAM_NAME = { storm: 'Stochastic STORM', setcover: 'Set covering', pmedian: 'p-median', cflp: 'Facility location', qap: 'QAP relaxation' };
 const FAM_SHORT = { storm: 'STORM', setcover: 'Set cover', pmedian: 'p-median', cflp: 'CFLP', qap: 'QAP' };
 const AG = {
   'opus55-max': { label: 'Opus 5.5 (max)', short: 'Opus', color: 'var(--opus)', cls: 'opus' },
-  'astra-high': { label: 'GPT-6-Astra (high)', short: 'Astra', color: 'var(--astra)', cls: 'astra' },
+  'astra-high': { label: 'GPT-6-Astra (high)', short: 'Astra 6', color: 'var(--astra)', cls: 'astra', codex: true },
+  'astra62-high': { label: 'GPT-6.2-Astra (high)', short: 'Astra 6.2', color: 'var(--astra62)', cls: 'astra62', codex: true },
 };
+// Legend entries for the agents, in AGENTS order.
+const agentLegend = extra => AGENTS.map(a => ({ label: AG[a].short, color: AG[a].color, ...extra }));
 function solverMeta(key, fam) {
   const gpu = DATA.families[fam] && DATA.families[fam].target === 'gpu';
   const M = {
@@ -84,6 +87,7 @@ function fmtTok(v) {
 const STATUS = {
   optimal: { cat: 'ok', label: 'verified' },
   time_limit: { cat: 'time', label: 'time limit' }, iteration_limit: { cat: 'time', label: 'gave up (iteration limit)' },
+  limit: { cat: 'time', label: 'gave up (internal limit)' }, inaccurate: { cat: 'wrong', label: 'gave up (inaccurate answer)' },
   memory_limit: { cat: 'mem', label: 'out of memory' },
   error: { cat: 'err', label: 'error / rejected input' },
   verification_failed: { cat: 'wrong', label: 'failed verification' }, not_optimal: { cat: 'wrong', label: 'not optimal' }, failed: { cat: 'wrong', label: 'failed (no verified answer)' },
@@ -389,15 +393,18 @@ function tasksFigure(fig) {
 // ---------- Figure 2: development ----------
 // Estimated list-price API cost, USD per million tokens. Opus 5.5: Anthropic API rates, cache writes at the
 // 5-minute rate (1.25x input). GPT-6-Astra: published third-party summaries of OpenAI's standard tier.
+// GPT-6.2-Astra: OpenAI API pricing page (developers.openai.com/api/docs/pricing, 2026-11-18), Standard tier,
+// short context (Codex sessions stay below the 272K-token long-context threshold); cache writes at the 30-minute rate.
 // Codex reports input_tokens including cache reads, so fresh input = input - cached.
 const PRICE = {
   'opus55-max': { inp: 4, cw: 5, cache: 0.2, out: 20 },
   'astra-high': { inp: 10, cw: 10, cache: 1, out: 50 },
+  'astra62-high': { inp: 8, cw: 10, cache: 0.4, out: 40 },
 };
 function apiCost(a, u) {
   if (!u || u.out == null) return null;
   const p = PRICE[a], cache = u.cache || 0;
-  const fresh = a === 'astra-high' ? Math.max(0, (u.inp || 0) - cache) : (u.inp || 0);
+  const fresh = AG[a].codex ? Math.max(0, (u.inp || 0) - cache) : (u.inp || 0);
   return (fresh * p.inp + cache * p.cache + (u.cw || 0) * p.cw + u.out * p.out) / 1e6;
 }
 const usageN = u => ({ inp: u.input_tokens, cache: u.cached_input_tokens, cw: u.cache_creation_input_tokens, out: u.output_tokens });
@@ -405,7 +412,8 @@ const runCost = (fam, a) => apiCost(a, usageN(DATA.runs[`${fam}/${a}`].usage));
 const fmtUSD = v => v == null ? '—' : '$' + (v >= 100 ? v.toFixed(0) : v.toFixed(v >= 10 ? 1 : 2));
 // The run explorer on Hugging Face, opened at the code of one submission of a v1 run.
 const SPACE = 'https://huggingface.co/spaces/yuanchenyang/lp-benchmark-results';
-const codeUrl = (fam, a, id) => `${SPACE}#/results?${new URLSearchParams({ run: `${fam}-v1-${a}-20261028`, tab: 'code', rev: id })}`;
+const RUN_SUFFIX = { 'opus55-max': '20261028', 'astra-high': '20261028', 'astra62-high': '20261117-r2' };
+const codeUrl = (fam, a, id) => `${SPACE}#/results?${new URLSearchParams({ run: `${fam}-v1-${a}-${RUN_SUFFIX[a]}`, tab: 'code', rev: id })}`;
 // The two development charts of a family share one hover: the pointer snaps to the nearest
 // submission, and both charts mark it with a vertical line and a ring around its point.
 function devLink(fam) {
@@ -509,7 +517,7 @@ function tokenChart(fam, modeRef, link) {
     const step = Math.pow(10, Math.floor(Math.log10(hi))) * (hi / Math.pow(10, Math.floor(Math.log10(hi))) > 4 ? 1 : 0.5);
     for (let v = 0; v <= hi; v += step) { S('line', { x1: m.l, x2: W - m.r, y1: y(v), y2: y(v), class: v ? 'grid-line' : 'base-line' }, ax); T(ax, m.l - 6, y(v) + 4, mode === 'cost' ? '$' + +v.toPrecision(3) : fmtTok(v), '', { 'text-anchor': 'end' }); }
     [0, 30, 60, 90, 120].forEach(v => T(ax, x(v), Hh - m.b + 16, v + ' min', '', { 'text-anchor': 'middle' }));
-    let prevLabelY = -99;
+    const labelYs = [];
     series.forEach(({ a, pts }) => {
       const col = AG[a].color;
       S('path', { d: 'M' + pts.map(p => `${x(p.m)} ${y(p.v)}`).join('L'), style: `fill:none;stroke:${col};stroke-width:2;stroke-linejoin:round` }, svg);
@@ -520,8 +528,9 @@ function tokenChart(fam, modeRef, link) {
       // End labels sit above their point, or below it when that would collide with the first label.
       const lp = pts[pts.length - 1];
       let ly = y(lp.v) - 8;
-      if (Math.abs(ly - prevLabelY) < 13) ly = y(lp.v) + 18;
-      prevLabelY = ly;
+      if (labelYs.some(v => Math.abs(ly - v) < 13)) ly = y(lp.v) + 18;
+      while (labelYs.some(v => Math.abs(ly - v) < 13)) ly += 13;
+      labelYs.push(ly);
       T(svg, x(lp.m) - 8, ly, fmtV(lp.v), 'val', { 'text-anchor': 'end' });
     });
     snapOverlay(svg, link, 'tokens', x, { x0: m.l, x1: W - m.r, y0: m.t, y1: Hh - m.b }, (a, e) => { const v = val(e, a); return v == null ? null : y(v); });
@@ -533,6 +542,9 @@ const LANG = {
   'pmedian/opus55-max': 'C++ · OpenMP', 'pmedian/astra-high': 'C++ · LAPACK',
   'cflp/opus55-max': 'Python · CuPy kernels', 'cflp/astra-high': 'CUDA C++',
   'qap/opus55-max': 'CUDA C++', 'qap/astra-high': 'CuPy kernels · C++',
+  'storm/astra62-high': 'C++ · OpenMP · SuiteSparse AMD', 'setcover/astra62-high': 'C++ · OpenBLAS',
+  'pmedian/astra62-high': 'C++ · OpenBLAS', 'cflp/astra62-high': 'CUDA C++ · cuBLAS',
+  'qap/astra62-high': 'CuPy · CUDA C++',
 };
 function agentCard(root, fam, a) {
   const r = DATA.runs[`${fam}/${a}`], s = SUM[fam][a], u = r.usage;
@@ -576,9 +588,9 @@ function instTable(fam) {
   for (const split of ['dev', 'heldout']) f[split].forEach(i => {
     const b = bestGPInst(fam, split, i);
     const cell = a => { const r = f.solvers[a][split][i]; return r && r.t != null ? fmtS(r.t) : `<span style="color:var(--critical)">✕ ${esc(statusOf(r && r.status).label)}</span>`; };
-    rows.push(`<tr><td class="muted">${split}</td><td class="mono">${i}</td><td class="r">${cell('opus55-max')}</td><td class="r">${cell('astra-high')}</td><td class="r">${b ? fmtS(b.t) : '—'}</td><td>${b ? solverMeta(b.key, fam).label : ''}</td></tr>`);
+    rows.push(`<tr><td class="muted">${split}</td><td class="mono">${i}</td>${AGENTS.map(a => `<td class="r">${cell(a)}</td>`).join('')}<td class="r">${b ? fmtS(b.t) : '—'}</td><td>${b ? solverMeta(b.key, fam).label : ''}</td></tr>`);
   });
-  return `<div class="tbl-wrap"><table class="t"><thead><tr><th>Split</th><th>Instance</th><th class="r">Opus</th><th class="r">Astra</th><th class="r">Best GP</th><th>GP solver</th></tr></thead><tbody>${rows.join('')}</tbody></table></div>`;
+  return `<div class="tbl-wrap"><table class="t"><thead><tr><th>Split</th><th>Instance</th>${AGENTS.map(a => `<th class="r">${AG[a].short}</th>`).join('')}<th class="r">Best GP</th><th>GP solver</th></tr></thead><tbody>${rows.join('')}</tbody></table></div>`;
 }
 function developmentFigure(fig) {
   const root = frame(fig, {
@@ -594,7 +606,7 @@ function developmentFigure(fig) {
     const body = H('div', { class: 'panel-body' }), link = devLink(f);
     const g = H('div', { class: 'grid2' });
     const c1 = H('div', { class: 'cell' });
-    c1.innerHTML = `<div class="chart-title"><h4>Dev score over the 2-hour budget</h4>${legendHTML([{ label: 'Opus', color: 'var(--opus)' }, { label: 'Astra', color: 'var(--astra)' }, { label: 'selected', color: 'var(--ink-2)', hollow: true }])}</div>`;
+    c1.innerHTML = `<div class="chart-title"><h4>Dev score over the 2-hour budget</h4>${legendHTML([...agentLegend(), { label: 'selected', color: 'var(--ink-2)', hollow: true }])}</div>`;
     const e1 = H('div', { class: 'chart' }); c1.appendChild(e1);
     chart(e1, devScoreChart(f, link));
     const c2 = H('div', { class: 'cell' });
@@ -622,7 +634,7 @@ function speedupFigure(fig) {
   const splitD = { split: 'heldout' };
   const root = frame(fig, {
     sub: 'Compared with the best general-purpose solver for each family: MOSEK, COPT barrier and HiGHS HiPO on CPU; HPR-LP, cuOpt and COPT PDLP on GPU.',
-    legend: legendHTML([{ label: 'Opus', color: 'var(--opus)', shape: 'square' }, { label: 'Astra', color: 'var(--astra)', shape: 'square' }, { label: 'general-purpose', color: 'var(--gp2)', shape: 'square' }, { label: 'one instance', color: 'var(--ink)' }, { label: 'failed (counts as 300 s)', color: 'var(--critical)', cross: true }]),
+    legend: legendHTML([...agentLegend({ shape: 'square' }), { label: 'general-purpose', color: 'var(--gp2)', shape: 'square' }, { label: 'one instance', color: 'var(--ink)' }, { label: 'failed (counts as 300 s)', color: 'var(--critical)', cross: true }]),
     caption: 'Bars are the benchmark score, the shifted geometric mean of solve times. The right column gives the score and its speedup over the best general-purpose solver.',
   });
   const ctl = H('div', { class: 'toolbar' });
@@ -727,7 +739,7 @@ const OOD_TAG = {
 };
 function oodFigure(fig) {
   const root = frame(fig, {
-    legend: legendHTML([{ label: 'v1 held-out', color: 'var(--ink-2)', hollow: true }, { label: 'OOD held-out', color: 'var(--ink-2)' }, { label: 'Opus', color: 'var(--opus)' }, { label: 'Astra', color: 'var(--astra)' }, { label: 'one OOD instance', color: 'var(--ink)', small: true }, { label: 'failed instance', color: 'var(--critical)', cross: true }]),
+    legend: legendHTML([{ label: 'v1 held-out', color: 'var(--ink-2)', hollow: true }, { label: 'OOD held-out', color: 'var(--ink-2)' }, ...agentLegend(), { label: 'one OOD instance', color: 'var(--ink)', small: true }, { label: 'failed instance', color: 'var(--critical)', cross: true }]),
     caption: 'Unverified OOD instances count as 300 s.',
   });
   const el = H('div', { class: 'chart' });
@@ -735,9 +747,9 @@ function oodFigure(fig) {
   chart(el, (el, W) => {
     const narrow = W < 520;
     // Narrow layouts drop the agent names (the colours tell them apart) and keep decade ticks only.
-    const m = { l: narrow ? 40 : 58, r: narrow ? 56 : 100, t: 30, b: 22 }, rh = 24, tagH = 14, gap = 12;
+    const m = { l: narrow ? 40 : 76, r: narrow ? 56 : 100, t: 30, b: 22 }, rh = 24, tagH = 14, gap = 12;
     const right = W - m.r;
-    const x = logS(0.1, 300, m.l, right - 4);
+    const x = logS(0.1, 1000, m.l, right - 4);
     // The OOD shifts follow each family name on its line, wrapping to the plot width.
     const nameW = f => FAM_NAME[f].length * 7.6 + 14;
     const tagLines = f => {
@@ -750,11 +762,11 @@ function oodFigure(fig) {
       return lines;
     };
     const headH = f => 20 + (tagLines(f).length - 1) * tagH;
-    const gH = f => headH(f) + 2 * rh + gap;
+    const gH = f => headH(f) + AGENTS.length * rh + gap;
     const Hh = m.t + m.b + FAMS.reduce((a, f) => a + gH(f), 0) - gap;
     const svg = S('svg', { width: W, height: Hh }, el);
     const ax = S('g', { class: 'ax' }, svg);
-    logTicks(0.1, 300).filter(v => !narrow || Number.isInteger(Math.log10(v))).forEach(v => { S('line', { x1: x(v), x2: x(v), y1: m.t - 6, y2: Hh - m.b, class: 'grid-line' }, ax); T(ax, x(v), m.t - 12, tickX(v), '', { 'text-anchor': 'middle' }); });
+    logTicks(0.1, 1000).filter(v => !narrow || Number.isInteger(Math.log10(v))).forEach(v => { S('line', { x1: x(v), x2: x(v), y1: m.t - 6, y2: Hh - m.b, class: 'grid-line' }, ax); T(ax, x(v), m.t - 12, tickX(v), '', { 'text-anchor': 'middle' }); });
     S('line', { x1: x(1), x2: x(1), y1: m.t - 6, y2: Hh - m.b, style: 'stroke:var(--ink-2);stroke-width:1.2' }, svg);
     T(svg, x(1) - 5, Hh - 4, narrow ? '← slower' : '← slower than best general-purpose', 'ax', { 'text-anchor': 'end' });
     T(svg, x(1) + 5, Hh - 4, 'faster →', 'ax');
@@ -794,7 +806,7 @@ function oodFigure(fig) {
         const dots = DATA.families[f].ood.map(i => {
           const rec = DATA.families[f].solvers[a].ood[i], b = bestGPInst(f, 'ood', i), ok = rec && rec.t != null;
           const sp = ok && b ? b.t / rec.t : null;
-          return { i, rec, b, ok, sp, px: sp ? x(Math.min(300, Math.max(0.1, sp))) : x(0.1) };
+          return { i, rec, b, ok, sp, px: sp ? x(Math.min(1000, Math.max(0.1, sp))) : x(0.1) };
         });
         // Labels sit outside the arrow, v1 behind its tail and OOD beyond its head, moved further
         // out past any dot that would fall under them.
@@ -822,7 +834,7 @@ function oodFigure(fig) {
           hover(dh, () => `<div class="tt-h">${AG[a].label} · ${esc(i)}</div>${ok ? ttRow('Solve time', fmtS(rec.t)) : ttRow('Result', esc(statusOf(rec && rec.status).label))}${b ? ttRow(solverMeta(b.key, f).label, fmtS(b.t)) : ''}${sp ? ttRow('Speedup', fmtX(sp)) : ''}<div class="tt-n">${esc(OOD_SHIFT[f][i])}</div>`);
         });
       });
-      yy += 2 * rh + gap;
+      yy += AGENTS.length * rh + gap;
     });
   });
 }
@@ -838,7 +850,7 @@ function crossFigure(fig) {
   chart(el, (el, W) => {
     const narrow = W < 520;
     // Narrow layouts put each family's name on a line of its own and mark the agents by colour only.
-    const lw = narrow ? 16 : W < 640 ? 92 : 150, top = 34, rh = narrow ? 24 : 30, hh = narrow ? 18 : 0, fh = hh + 2 * rh;
+    const lw = narrow ? 16 : W < 640 ? 100 : 150, top = 34, rh = narrow ? 24 : 30, hh = narrow ? 18 : 0, fh = hh + AGENTS.length * rh;
     const cw = Math.min(130, (W - lw) / 5);
     const svg = S('svg', { width: W, height: top + FAMS.length * fh + 8 }, el);
     if (!narrow) T(svg, 0, top - 12, 'built for ↓  run on →', 'ax');
@@ -852,8 +864,8 @@ function crossFigure(fig) {
       const cy = r.cy;
       if (narrow) S('circle', { cx: 5, cy, r: 4.5, style: `fill:${AG[r.a].color}` }, svg);
       else {
-        S('circle', { cx: lw - (W < 640 ? 34 : 50), cy, r: 4.5, style: `fill:${AG[r.a].color}` }, svg);
-        T(svg, lw - (W < 640 ? 26 : 42), cy + 4, AG[r.a].short, 'lab');
+        S('circle', { cx: lw - (W < 640 ? 48 : 64), cy, r: 4.5, style: `fill:${AG[r.a].color}` }, svg);
+        T(svg, lw - (W < 640 ? 40 : 56), cy + 4, AG[r.a].short, 'lab');
       }
       FAMS.forEach((t, c) => {
         const rec = crossRec(r.o, r.a, t);
